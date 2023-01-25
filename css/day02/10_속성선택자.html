@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>속성 선택자</title>
+<style>
+  [href]{
+    text-decoration: none;
+    }
+  [href="https://www.naver.com"]{
+    color: green;
+  } 
+  [class~="emtxt"]{
+    color: red;
+  } 
+  [class *="po"]{
+    color: blue;
+  }
+  [class $= "i"]{
+    font-size: 20px;
+  }
+  [class ^= "p"]{
+    font-style: italic;
+  }
+  [class |= "po"]{
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <h2>우리나라 포털사이트</h2>
+  <ul>
+      <li><a href="https://www.naver.com">네이버</a>로 이동하기</li>
+      <li><a href="https://www.daum.net">다음</a>으로 이동하기</li>
+      <li><a href="https://www.google.com">구글</a>로 이동하기</li>
+  </ul>
+  <p>
+      우리나라의 <span class="po">포털</span>의 사용도는 <span class="po-li">네이버</span>가 압도적입니다.
+      그러나 최근 <span class="po-li">구글</span>의 점유율이 높아지고 있으며,
+      <span class="po-li emtxt">다음</span>은 이에 대응하기 위해서 <span class="emtxt">카카오</span>와 인수합병을 강행했습니다.
+  </p>
+</body>
+</html>

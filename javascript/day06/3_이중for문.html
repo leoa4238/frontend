@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>이중 for문</h2>
+  <script>
+    for (let i = 0; i < 2; i++) {
+      document.write('for문 시작!<br>');
+      for (let j = 0; j < 3; j++) {
+        document.write(`i: ${i},  j:${j}`);
+        document.write('안쪽 for문<br>')
+      }
+      document.write('for문 끝!<br>');
+    }
+
+    document.write('<h2>구구단을 1단부터 9단까지 출력하기</h2>');
+    for (let i = 1; i <= 9; i++) {
+      document.write(`---${i}단---<br>`);
+      for (let j = 1; j <= 9; j++) {
+        document.write(`${i}x${j}=${i * j}<br>`);
+      }
+      document.write('<br>');
+    }
+
+    document.write('<h2>3단씩 출력</h2>');
+    //j가 0일떄 1일때 2일때  3*j+1
+    //1 2 3     456   789
+    for(let j = 0; j<3; j++){
+      document.write(`---${3*j+1}단---  ---${3*j+2}단---  ---${3*j+3}단---<br>`);
+
+      for(let i = 1; i<9; i++){
+        document.write(`${3*j+1}x${i}=${(3*j+1) * i}  ${3*j+2}x${i}=${(3*j+2)* i}  ${3*j+3} x ${i}=${(3*j+3) * i}<br>`);
+      };
+
+      document.write('<br>');
+
+    }
+   
+    
+    // for(let i = 1; i <=9; i++){
+    //   document.write('<tr>');
+    //   for(let j = 2; j<= 9; j++){
+    //     document.write('<td>'+ j + '*' + i + '=' + (j * i) + '</td>');
+    //   }
+    //   document.write('</tr>');
+    // }
+  </script>
+</body>
+
+</html>

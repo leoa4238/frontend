@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //변수 선언과 값 대입
+            var age = 20;
+            console.log(age);
+            age = 50;
+            console.log(age);
+            age = '안녕';
+            console.log(age);
+
+            dd = 10;
+            console.log(dd);
+
+            function f() {
+                variable1 = 10;
+                var variable2 = 20;
+            }
+
+            f();
+            console.log(variable1);
+            // console.log(variable2);
+
+            var day; //변수선언
+            day = 15; //최초 값 대입(초기화)
+            day = 16; //재할당(다른 값을 대입)
+            day = 17; //재할당
+
+            var day; //변수 재선언(똑같은 이름의 변수 만들기)
+            day = 50;
+            console.log(day);
+
+            //let은 호이스팅 불가능
+            //console.log(number);
+            let number = 10; // 변수 선언과 초기화 한번에
+            console.log(number);
+            number = 50; // 재할당 가능
+            console.log(number);
+            // let number = 11; 재선언 불가능
+
+            // 암호화 3
+            //비밀번호 암호화 * 3
+            //console.log(key);
+            const key = 3; //상수화된 변수 선언과 초기화
+            1011 * key;
+            // key = 5; 재할당 불가
+            //계좌번호 암호화 * 3
+            5551156 * key;
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //function a () {} === let a = function(){};
+
+  function cal(func, num){ 
+    return func(num)  //cal의 첫번째 인자로 전달된 func함수를 호출하면서 두번째 인자로 전달된 값을 그 호출된 함수의 첫번째 인자로 전달한다
+  }
+  function increase(num){
+    return num + 1;
+  }
+  function decrease(num){
+    return num-1;
+  }
+  
+  alert(cal(increase, 1));
+  alert(cal(decrease, 1));
+  </script>
+</body>
+</html>

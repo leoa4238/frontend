@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex레이아웃</title>
+  <style>
+    #container div{
+      width: 400px;
+      border: 1px solid black;
+      background-color: #e9e9e9;
+    }
+    h1{
+      font-size: 50px;
+      font-weight: bold;
+      padding: 20px;
+    }
+    #container{
+      width: 1000px;/*가로길이*/
+      height: 500px;
+      margin: 0 auto;
+      border: 3px solid red;
+      display: flex;
+      /* flex는 자기자식의 영향을 받게 되어 있음 */
+      flex-wrap: wrap-reverse;
+    }
+  </style>
+</head>
+<body>
+  <h2>flex레이아웃</h2>
+  <div id="container">
+    <div id="box1"><h1>1</h1></div>
+    <div id="box2"><h1>2</h1></div>
+    <div id="box3"><h1>3</h1></div>
+  </div>
+</body>
+</html>

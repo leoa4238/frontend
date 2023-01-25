@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체지향</title>
+</head>
+<body>
+  <script>
+        //하나의 객체가 있고 그 데이터를 사용하는 함수가 들어있다
+        //그리고 함수를 호출할 때는 .show를 하면 그 객체에 소속되 있는 함수를 호출해서
+        //grades라는 객체에 데이터와 함수를 그루핑을 한 그릇이라 볼 수 있다.
+    let grades = {
+      //key       //또다른 값
+      'list': {'egoing': 10, 'k8805':8,'sorialgi': 80},
+      'show': function(){
+        for(let name in this.list){
+          console.log(name, this.list[name]);
+        }  
+        // alert('Hello world'); //값으로써 함수는 객체로써 저장이 될 수 있다.
+          // for(let name in this.list){
+          //     document.write(name+':'+this.list[name]+'<br/>');
+            }
+        }
+      
+      grades.show();
+    
+  </script>
+</body>
+</html>

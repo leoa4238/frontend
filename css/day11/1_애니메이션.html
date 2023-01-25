@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>애니메이션</title>
+  <style>
+    div{
+      height: 100px;
+      width: 100px;
+      border: 1px solid black;
+      margin: 10px auto;
+    }
+
+    #box1{
+      background-color: aqua;
+      animation-name: moving;
+      animation-duration: 3s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 5;
+    }
+    #box2{
+      background-color: aquamarine;
+      animation-name: shape;
+      animation-duration: 3s;
+    }
+    #box3{
+      background-color: blueviolet;
+      animation-name: rotate;
+      animation-duration: 3s;
+      animation-direction: alternate-reverse;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes moving{
+      0% {
+        width: 200px;
+        background-color: gold;
+        opacity: 0.5;
+        transform: scale(0.5) rotate(30deg);
+      }
+    50%{
+        width: 300px;
+        background-color: beige;
+        transform: rotate(-30deg);
+      }
+      100% {
+        width: 400px;
+        background-color: red;
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes shape{
+        100%{
+        border-radius: 50%;
+        }
+    }
+
+    @keyframes rotate{
+      0%{
+        transform: rotate(0deg);
+      }
+      10%{
+        transform: rotate(-20deg);
+      }
+      70%{
+        transform: rotate(70deg);
+      }
+      100%{
+        transform: rotate(30deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="box1" style="height: 500px;">box1</div>
+  <div id="box2">box2</div>
+  <div id="box3">box3</div>
+</body>
+</html>

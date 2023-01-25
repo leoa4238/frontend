@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+    }
+
+    p {
+      text-align: center;
+      font-size: 50px;
+      color: aquamarine;
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>결과</h2>
+  <!-- <p>결과값이 나오는 자리</p> -->
+  <script>
+    //1.사용자에게 점수를 입력받아서, 
+    //해당 점수는 90이상 A
+    // 80이상 90미만 B
+    // 70미만 F
+    // 당신의 점수는 c입니다.
+    // let score = Number(prompt('점수를 입력하세요'))
+    // let grade = 'F';
+    // document.write('<P>')
+    // if (score >= 90) {
+    //   grade = 'A';
+    // } else if (score >= 80) {
+    //   grade = 'B';
+    // } else if(score >= 70) {
+    //   grade = 'C';
+    // } 
+    // // document.write('당신의 점수는'+ grade +'입니다');
+    // document.write(`당신의 점수는 ${grade}입니다</P>`);
+
+    //2. 사용자에게 년도를 입력받아서
+    // 윤년이라면 윤년, 평년이라면 평년 출력하기
+    // 4의 배수이고, 100의 배수이고, 400의 배수라면 윤년
+    // 4의 배수이고, 100의 배수이고, 400의 배수아니라면 평년
+    // 4의 배수이고, 100의 배수아니고,윤년
+    // 4의 배수 아니라면 평년
+    //날짜 가져오기
+    let now = new Date();
+    console.log(now.getFullYear());
+    let year = now.getFullYear();
+    
+    
+    // let year =Number(prompt('연도입력'));
+    let isLeap;
+      //4의 배수이고, 100의 배수라면 400의 배수라면
+    //if문 사용하는 방식
+      if((year % 4 ==0 && year % 100 != 0) || (year % 400 == 0)){
+      //윤년
+      isLeap='윤년'
+    }
+      else{
+      //평년  
+      isLeap='평년'
+    }   
+    document.write(`<p>${year}년도는 ${isLeap}입니다</p>`);
+
+    //if문 사용하는 방식 2
+    if(year %400 ==0){
+      document.write(`<p>${year}년도는 윤년입니다</p>`)
+    }else if(year % 100 ==0){
+      document.write(`<p>${year}년도는 평년입니다</p>`)
+    }
+    else if(year % 4 ==0){
+      document.write(`<p>${year}년도는 윤년입니다</p>`)
+    }
+    else{
+      document.write(`<p>${year}년도는 평년입니다</p>`)
+    }
+    
+    
+    
+    //해설2
+    // let year = Number(prompt('연도입력'));
+    // document.write('<p>' + year + '년은 ');
+    // if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+    //   document.write('윤년')
+    // } else {
+    //   document.write('평년')
+    // }
+    // document.write('</p>')
+
+
+      
+      
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우선순위</title>
+  <style>
+    div{
+      height: 50px !important;
+      margin-bottom: 20px;
+      border: 3px solid black;
+      background-color: antiquewhite;
+    }
+    .box{
+      background-color: aqua;
+    }
+    
+    #div3{
+      background-color: blueviolet;
+      height: 1000px;
+    }
+    #div1{
+      background-color: blue !important;
+    }
+    .test{
+      background-color: brown;
+    }
+    ul{
+      background-color: aqua;
+    }
+    li{
+      background-color: beige;
+    }
+    ul> li{
+      background-color: blue;
+    }
+    ul > li.li-class{
+      background-color: aquamarine;
+    }
+    </style>
+</head>
+<body>
+  <div id="div1" class="box" style="background-color: beige;">div1번(!important는 가장 우선순위가 높다)</div>
+  <div id="div2" class="box" style="background-color: aquamarine;">div2번(inline-style 적용)</div>
+  <div id="div3" class="box">div3번(id선택자 스타일 적용)</div>
+  <div id="div4" class="box">div4번(class 선택자 스타일 적용)</div>
+  <div id="div5" >div5번 (태그 선택자 스타일 적용)</div>
+  <div class="box test">div6번 우선순위가 같은경우 뒤어 써있는 스타일적용</div>
+
+  <ul>
+    <li class="li-class">ul태그 안에 있는 li태그</li>
+  </ul>
+</body>
+</html>

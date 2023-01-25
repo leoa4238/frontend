@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>버튼</button>
+  <script>
+    'use strict';
+    // let person={
+    //   fullname: '짐코딩',
+    //   age:20,
+    //   printThis: function(){
+    //     console.log(this);
+    //     console.log('this === person:', this === person);
+    //     console.log('this === window: ', this===window );
+    //     // console.log(this.fullname)
+    //     // console.log(this.age)
+    //   },
+    // };
+    // // person.printThis();
+    // let printThis = person.printThis;
+    // printThis();
+    
+      function printThis(){
+        console.log(this); //default this => window
+      }
+      printThis();
+
+      // let person1 = {
+      //   name : '홍길동1',
+      //   printThis:printThis
+      // };
+      // person1.printThis();
+      
+      // let person2 = {
+      //   name : '홍길동2',
+      //   printThis:printThis
+      // };
+      // person1.printThis();
+      // let person3 = {
+      //   name : '홍길동3',
+      //   printThis:printThis
+      // };
+      // person1.printThis();
+
+      let btn = document.querySelector('button');
+      btn.addEventListener('click', function(){
+        console.log(this);
+        console.log(this ===btn);
+      });
+
+      //ES5 bind - this 설정
+    //   function printThis(){
+    //     console.log(this); //default this => window
+    //   }
+    //   let person1={
+    //     name: '홍길동',
+    //   };
+    //   let person2={
+    //     name: '김길동',
+    //   };
+    //  let printThis1 = printThis.bind(person1); 
+    //  //bind는 원래 함수에 한번만 사용을 할 수 있다
+    //  printThis1();
+  
+  
+    //화살표함수는 this는 자신을 감싸고 있는 외부스코프에서 this를 물려받는다
+    // let person = {
+    //   name : '짐코딩',
+    //   age : 20,
+    //   hello: function(){
+    //     console.log(this);
+    //     setTimeout( ()=>{
+    //       console.log(this);
+    //     }  ,1000);
+    //   }
+    // }
+    // person.hello();
+
+    // console.log(this)
+    // console.log(this===window) 
+    
+
+    //strict mode
+
+  </script>
+</body>
+</html>

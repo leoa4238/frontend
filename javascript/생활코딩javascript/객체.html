@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>egoing</li>
+    <li>graphite</li>
+    <li>leezche</li>
+  </ul>
+
+
+  <script>
+    //객체(object) 서로 연관되어 있는 데이터를 담아내기 위해서 배열과 매우 유사하다
+    //인덱스로 원하는 데이터를 설정할 수 있다
+    //방법1
+    // let grades = {'egoing': 10, 'k8805': 6, 'sorialgi': 80};
+    // console.log(grades);
+
+    //방법2
+    let grids = {};
+    grids['sunghyun'] = 10;
+    grids['minsong'] = 80;
+    grids['sorialgi'] = '바보';
+    console.log(grids);
+
+    //방법3
+    let apple = new Object();
+    //key  =  value  
+    apple['user1'] = 10;
+    apple['user2'] = 20;
+    apple['user3'] = 30;
+    apple['user4'] = 40;
+    console.log(apple);
+
+    //객체를 다루는 방법 (반복문을 이용한 객체를 다루는 법)
+    // let arr=['a','b','c'];
+    // for(let i = 0; i<arr.length; i++){
+    //   console.log(arr[i]);
+    // }
+
+    //for in문
+    let grades = { 'egoing': 10, 'k8805': 6, 'sorualgi': 80 };
+    for (let name in grades) {
+      document.write('<li>key: ' + name  + 'value: '  + grades[name] + '</li>');
+    }
+    
+
+  </script>
+</body>
+
+</html>

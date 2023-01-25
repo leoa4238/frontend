@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열</title>
+</head>
+
+<body>
+  <script>
+    //배열(array)이란 연관된 데이터를 모아서 통으로 관리하기 위해서 사용하는 데이터 타입이다. 
+    //변수가 하나의 데이터를 저장하기 위한 것이라면 배열은 여러 개의 데이터를 하나의 변수에 저장하기 위한 것이라고 할 수 있다.
+    // let member=['egoing', 'k8805', 'sorialgi'];
+    // alert(member[1]);
+
+    // function get_members(){
+    //   return ['egoing', 'k8805'];
+    // }
+    // members = get_members();
+    // document.write(members[0].toUpperCase()+'<br>');
+    // document.write(members[1].toUpperCase()+'<br>');
+
+    //배열과 반복문의 결합
+    // function get_members() {
+    //   return ['egoing', 'k8805','sorialgi','leezche'];
+    // }
+
+    // members = get_members();
+
+    // for (let i = 0; i < members.length; i++) {
+    //   document.write(members[i].toUpperCase() + '<br>');
+    // }
+    
+    //꼬리에다가 배열을 추가하는 방법(li.push, li=li.concat)
+  //   let li = ['a','b','c','d','e'];
+  //   // li.push('f');
+  //  li = li.concat('f','g','h')
+  //   console.log(li);
+    
+    //앞에다가 추가하는 방법 => 배열은 1씩 늘어난다.
+    // let li = ['a','b','c','d','e'];
+    // li.unshift('z');
+    // console.log(li)
+    
+    //중간에다가 추가하는 방법 (.splice)
+    // let a = ['a','b','c'];
+    // a.splice(1,1,'x','y'); //첫번째인자는 인덱스 1이니깐'b'를가르키고, 두번째1은 한개의 엘리먼트'b'를 삭제하고 x,y을 배열을 차례대로 넣어준다
+    // console.log(a);
+
+    // //첫번째 원소 배열을 제거하는 방법(.shift)
+    // let li = ['a','b','c','d','e'];
+    // li.shift();
+    // console.log(li); 
+
+    //맨 뒤에 원소 배열을 제거하는 방법
+    // let li = ['a','b','c','d','e'];
+    // li.pop();
+    // console.log(li);
+
+    //정렬을 하는 방법
+    // let li = ['c','e','a','b','d'];
+    // li.sort();
+    // console.log(li);
+    // //역순으로 한다면
+    // li.reverse();
+    // console.log(li);
+  </script>
+</body>
+
+</html>

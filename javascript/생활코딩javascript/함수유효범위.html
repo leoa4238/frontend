@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let vscope = 'global';//전역변수: 함수 바깥쪽 전역을 사용할 수 있는 변수
+    // function fscope(){
+    //   let vscope ='local'//지역변수:함수 안쪽에서만 사용할 수 있는 변수
+    //   alert(vscope);
+    // }
+    // function fscope2(){
+    //   alert(vscope);
+    // }
+    // fscope(); //지역변수(local variable), 전역변수 개념(global variable) 
+    // fscope2();
+
+    function fscope3(){
+      let vscope = 'local'; //함수안에서 변수 선언할 때 let 또는 var을 빼면 전역변수를 의미하게 된다 고로 지금은 지역변수
+      vscope = 'local';
+    }
+    fscope3();
+    alert(vscope);
+    /*함수 밖에서 var 또는 let을 사용하게 되면 전역변수가 되고, 
+    함수 안에서 var 또는 let을 사용하게 되면 지역변수가 된다. 언제나 사용해주는 것이 바람직하다*/
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h2{
+      text-align: center;
+    }
+    p{
+      text-align: center;
+      color: violet;
+      font-size: 50px;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <h2>결과</h2>
+  <script>
+   //사용자에게 두 수를 입력받고,
+   //둘중 더 큰 수를 출력하되,값이 같은 경우에는 같다라고 출력하기
+   
+    let num1 =Number(prompt('정수1'));
+    let num2 =Number(prompt('정수2'));
+
+    document.write('<p>');
+      if(num1> num2){
+        document.write(num1);
+      }else if(num2>num1){
+        document.write(num2);
+      }else{
+        document.write('서로같다');
+      }
+    document.write('</p>');
+    
+
+    document.write('<p>');
+      if(num1>num2){
+        document.write(num1);
+      }else if(num1==num2){
+        document.write('같다');
+      }else {
+        document.write(num2);
+      }
+    document.write('</p>');
+   
+   //사용자한테 정수를 입력받아서 그 정수가 짝수인지 홀수 인지 판단하는것
+    // let num = Number(prompt());
+    // if(num%2==0){
+    //   document.write('<p>짝수입니다</p>');
+    // }
+    // else{
+    //   document.write('<p>홀수입니다</p>');
+    // }
+    
+    //방법2
+    // let num = Number(prompt());
+
+    // document.write('<p>');
+    // if(num%2==0){
+    //   document.write('짝수입니다');
+    // }
+    // if(num%2!=0){
+    //   document.write('홀수입니다');
+    // }
+    // document.write('</p>');
+  </script>
+</body>
+</html>
