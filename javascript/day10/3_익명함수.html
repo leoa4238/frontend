@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>익명함수</h2>
+  <script>
+    let a = f1;
+    function f1(){
+      console.log('이름있는 f1함수')
+    }
+
+    let b = function(){
+      console.log('익명함수1')
+    };
+    
+    //화살표 표현식(arrow)
+    let c = () => {
+      console.log('익명 함수3')
+    }
+
+    sort(() => {
+      console.log('익명 함수4')
+    });
+
+    let an1 = function (){
+      return '안녕';
+    }
+    let an2 = ()=>{
+      return '안녕2';
+    }
+   
+    console.log(an2());
+    let an3 = () => '안녕3';
+    console.log(an3());
+
+//=================================    
+    sort(a);
+    sort(b);
+    sort(function (){console.log('익명함수2')})
+
+    function sort(key) {
+      //key = function (){console.log('익명함수2')}
+      key();
+    
+    }
+
+  </script>
+</body>
+</html>

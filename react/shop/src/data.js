@@ -22,33 +22,4 @@ let data = [
   }
 ] 
 
-let Colmd=()=>{
-  return( 
-  <div className='col-md-4'>
-  <img src='https://codingapple1.github.io/shop/shoes1.jpg' width='80%'/>
-   <h4>제품명</h4>
-   <p>상세내용</p>
-   </div>
-   )
-}
-
-let Colmd2 =()=>{
-  return(
-    <div className='col-md-4'>
-          <img src='https://codingapple1.github.io/shop/shoes2.jpg' width='80%'/>
-            <h4>제품명</h4>
-            <p>상세내용</p>
-            </div>
-  )
-}
-let Colmd3 =()=>{
-  return(
-    <div className='col-md-4'>
-          <img src='https://codingapple1.github.io/shop/shoes3.jpg' width='80%'/>
-            <h4>제품명</h4>
-            <p>상세내용</p>
-          </div>
-  )
-}
-
 export default data;
