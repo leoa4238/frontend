@@ -53,7 +53,7 @@ function App() {
             </div>
           </>
         } />
-        <Route path='/detail' element={<Semi/>} />
+        <Route path='/detail/:id' element={<Semi shoes={shoes}/>} />
         
         <Route path='/about' element={<About/>}>
         <Route path='member' element={<div>member</div>} />
