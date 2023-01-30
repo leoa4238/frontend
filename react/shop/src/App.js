@@ -4,8 +4,8 @@ import { Button, Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import data from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
-import { hover } from '@testing-library/user-event/dist/hover';
 import Semi from './routes/Semi';
+import axios from 'axios';
 
 let Colmd = (props) => {
   return (
@@ -19,7 +19,8 @@ let Colmd = (props) => {
 
 
 function App() {
-  let [shoes, setshoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
+  let [결과, set결과] = useState(data);
   let navigate = useNavigate(); //페이지 이동을 도와주는 함수
 
   return (
@@ -43,15 +44,24 @@ function App() {
             <div className='main-bg'></div>
             <div className='container'>
               <div className='row'>
-                {
-                  shoes.map(function (a, i) {
+                { shoes.map((a, i)=>{
                     return (
-                      <Colmd shoes={shoes[i]} i={i}></Colmd>
+                      <Colmd shoes={shoes[i]} i={i} key={i} ></Colmd>
                     )
                   })
                 }
               </div>
             </div>
+            <button onClick={()=>{
+              //로딩중UI 띄우기
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              .then((결과)=>{
+                let copy =[...shoes, ...결과.data ]
+                setShoes(copy);
+              //로딩중 UI 숨기기  
+              })
+            
+            }}>더보기</button>
           </>
         } />
         <Route path='/detail/:id' element={<Semi shoes={shoes}/>} />

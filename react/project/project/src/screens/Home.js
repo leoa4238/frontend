@@ -8,7 +8,7 @@ const Home = () => {
     <Container>
       <Header>
          <MainHeader>
-          <h1>Developer Service</h1>
+          <h2>Developer Service</h2>
          </MainHeader>
       </Header>
     </Container>

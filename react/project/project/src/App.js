@@ -17,6 +17,7 @@ function App() {
       <Route path = "/About" element = {<About/>}/>
       <Route path = "/Projects" element = {<Projects/>}/>
       <Route path = "/Questions" element = {<Questions/>}/>
+      {/* <Route path = "/Questions/0" element = {<Questions/>}/> */}
       <Route path = "/ReactDoc" element = {<ReactDoc/>}/>
     </Routes>
    </Router>

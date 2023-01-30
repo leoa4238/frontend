@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 1px solid black;
+        height: 50px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>이벤트 다루기</h2>
+    <div id="div1" onclick="alert('alert실행됨')">속성에서 바로 함수 사용</div>
+    <div id="div2">태그객체의 onclick에 실행시킬 함수 전달</div>
+    <div id="div3">addEventListner()사용하는 방법</div>
+    <script>
+      document.querySelector('#div2').onclick = (a) => {
+        console.log(a);
+        console.log('div2가 클릭됨');
+      };
+
+      let myDiv = document.querySelector('#div3');
+      myDiv.addEventListener('click', function (e) {
+        console.log(e)
+        console.log('div3 클릭됨');
+      });
+      myDiv.addEventListener('click', function () {
+        console.log('div3에 연결된 두번째 함수');
+      });
+      myDiv.addEventListener('mouseover', (event) => {
+        console.log('mouseover 이벤트 발생함!');
+      });
+
+      //익명함수의 매개변수는 이벤트 객체가 대입된다
+      //이벤트 객체란 지금 발생한 이벤트에 대한 다양한 정보들이 한번에 들어있는 
+      //대상을 의미한다
+      //예를 들어 어떤이벤트(click, mouseover,....)가 발생했는지
+      //그 이벤트가 발생된 요소(div태그인지 a태그인지...)등에 대한 
+      //정보들이 다 들어 있다
+    </script>
+  </body>
+</html>

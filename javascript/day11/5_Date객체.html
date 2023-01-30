@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Date객체</h2>
+  <script>
+   let a = new Date(); //데이트 생성자 함수 a변수에 담음
+   console.log(a);
+  //Date 객체 안의 함수들(메소드)
+  //getFullYear() : 해당 날짜 객체의 년도를 return
+ console.log( a.getFullYear()); 
+  //getDay() : 해당 날짜 객체의 요일을 return
+  // 0: 일요일 1:월요일 ~ 6: 토요일
+ console.log(a.getDay());
+  //getMonth(): 해당 날짜 객체의 월을 return
+  // 0: 1월 ,1: 2월 ~ 11: 12월
+ console.log(a.getMonth());
+  //getDate() 해당날짜 객체의 일을 return
+ console.log(a.getDate());
+
+ let b = new Date('2022-11-12');
+ console.log(b);
+ let c = new Date('2022-11-12T21:00:30');
+ console.log(c);
+
+ let d = new Date('2020-10-15T10:00:00Z'); //날짜 기준선 기준으로 한다
+ console.log(d);
+
+ //밀리초 단위 : 1000밀리초 == 1초
+ //1970년 1월 1일 9:00:00 으로부터 밀리초만큼 지난 날짜 객체가 만들어진다
+ let e = new Date(1000);
+ console.log(e);
+
+  </script>
+</body>
+</html>

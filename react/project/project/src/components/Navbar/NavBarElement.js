@@ -13,20 +13,20 @@ const NavBarElement = () => {
             <Nav.Link href="/About">커뮤니티</Nav.Link>
             <Nav.Link href="/ReactDoc">실시간대화방</Nav.Link>
             <NavDropdown title="Questions" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">취업정보</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="/Questions/0">취업정보</NavDropdown.Item>
+              <NavDropdown.Item href="/Questions/1">
                 취업 후기
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3"></NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item href="/Questions/2">
                 Programmers
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">고객센터</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link href="#Sevice">고객센터</Nav.Link>
+            <Nav.Link eventKey={2} href="#login">
              로그인
             </Nav.Link>
           </Nav>
