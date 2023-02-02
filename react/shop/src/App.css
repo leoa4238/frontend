@@ -1,3 +1,16 @@
+
+
+.start {
+  /* 투명도 주는 스타일 opacity */
+  opacity: 0; 
+}
+.end {
+  opacity: 1;
+  /* 애니메이션 주는 스타일 opacity가 변경될 때 0.5초에 걸쳐서 변경해주세요 */
+  transition: opacity 0.5s; 
+}
+
+
 .main-bg{
   height: 300px;
   background-image: url(./img/bg.jpg);

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./date객체.css">
+</head>
+<body>
+  <h2>
+    javascript Date 객체
+  </h2>
+  <div class="tab">
+    <ul class="tabnav">
+      <li data-tab="tab01" class="tabs current">기념일 계산</li>
+      <li data-tab="tab02" class="tabs">D-day 계산</li>
+      <li data-tab="tab03" class="tabs">전역일 계산</li>
+    </ul>
+    <div class="contents">
+      
+      <div id="tab01" class="tabcontents current">
+        <div class="tabwrap">
+          <div>
+            <h3>우리의 기념일 계산하기</h3>
+            <p>만난 날을 입력해주세요</p>
+          </div>
+          <form action="">
+            <div class="input-div">
+              <label for="year">년도</label>
+              <input type="text" name="" id="year">
+            </div>
+            <div class="input-div">
+              <label for="year">월</label>
+              <input type="text" name="" id="month">
+            </div>
+            <div class="input-div">
+              <label for="year">일</label>
+              <input type="text" name="" id="date">
+            </div>
+            
+          </form>
+          <div id="buttons">
+            <button id="after100">100일 후!</button>
+            <button id="after200">200일 후!</button>
+            <button id="after300">300일 후!</button>
+          </div>
+          <div id="res">
+            이곳에 결과가 나옵니다
+          </div>
+        </div>
+      </div>
+      <div id="tab02" class="tabcontents">
+        <div class="tabwrap">
+          <div>
+            <h3>그 날까지 얼마나 남았을까?</h3>
+            <p>확인하고 싶은 날짜를 입력해주세요!</p>
+          </div>
+          <form action="">
+            <div class="input-div">
+              <label for="year">년도</label>
+              <input type="text" name="" id="year">
+            </div>
+            <div class="input-div">
+              <label for="year">월</label>
+              <input type="text" name="" id="month">
+            </div>
+            <div class="input-div">
+              <label for="year">일</label>
+              <input type="text" name="" id="date">
+            </div>
+            
+          </form>
+          <div id="buttons">
+            <button>확인하기</button>
+          </div>
+          <div id="res">
+            이곳에 결과가 나옵니다
+          </div>
+        </div>
+      </div>
+      <div id="tab03" class="tabcontents ">
+        <div class="tabwrap">
+          <div>
+            <h3>전역일 계산하기!</h3>
+            <p>입대 일자를 입력해 주세요!</p>
+          </div>
+          <form action="">
+            <input type="date" name="" id="date">
+            <br>
+            <input type="radio" name="sol_type" value="0" checked>육군
+            <input type="radio" name="sol_type" value="1">공군
+            <input type="radio" name="sol_type" value="2">해군
+            <input type="radio" name="sol_type" value="3">해병대
+            <input type="radio" name="sol_type" value="4">의병
+          </form>
+          <div id="buttons">
+            <button onclick = "f();">전역일 확인하기</button>
+          </div>
+          <div id="res">
+            이곳에 결과가 나옵니다
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--tab-->
+
+  <script>
+    let tabs = document.querySelectorAll('.tabs');
+    for (const t of tabs) {
+      t.addEventListener('click', e =>{
+        for (const t2 of tabs) {
+          t2.classList.remove('current');
+        }
+        e.target.classList.add('current');   
+        let tabcontents = document.querySelectorAll('.tabcontents');
+        for(const tc of tabcontents){
+          tc.classList.remove('current');
+          if(t.dataset.tab == tc.id){
+            tc.classList.add('current');
+          }
+        }
+      });
+    }
+
+    // let btn1 = document.querySelector('#after100');
+    // btn1.addEventListener('click', function(e){
+    //   let year_input = document.querySelector('#year');
+    //   console.log(year_input.value);
+    //   let year = year_input.value;
+    //   let month = document.querySelector('#month').value;
+    //   let date = document.querySelector('#date').value;
+
+    //   console.log(year);
+    //   console.log(month);
+    //   console.log(date);
+    //   let d = new Date(`${year}-${month}-${date}`);
+    //   console.log(d);
+    //   console.log(d + 100);
+
+    //   // 100일이 지난 날짜객체를 만들어야한다
+    //   console.log();
+    //   //getTime() : 1970년1월1일부터 해당 날짜 객체까지 지나온 
+    //   //            밀리초가 return
+    //   console.log(d.getTime());
+    //   let res = new Date(d.getTime() + 100 * 24 * 60 * 60 * 1000);
+    //   console.log(res);
+
+    //   document.querySelector('#res').innerHTML = `${res.getFullYear()}년${res.getMonth()+1}월${res.getDate()}일 입니다`;
+    // } );
+
+
+    let btn2 = document.querySelectorAll('div#buttons button');
+    console.log(btn2);
+    btn2.length = 3;
+  
+    console.log(btn2);
+
+    let btns = [btn2[0], btn2[1], btn2[2]];
+
+
+
+    for(b of btns){
+      
+      b.addEventListener('click', function(e){
+        console.log(e);
+        console.log(Number(e.target.innerHTML.substr(0, 3)));
+        let days = Number(e.target.innerHTML.substr(0, 3));
+
+        let year = document.querySelector('#year').value;
+        let month = document.querySelector('#month').value;
+        let date = document.querySelector('#date').value;
+
+        let target = new Date(`${year}-${month}-${date}`);
+        
+        let res = new Date(target.getTime() + days * 24 * 60 * 60 * 1000);
+        document.querySelector('#res').innerHTML = 
+        `${res.getFullYear()}년${res.getMonth() + 1}월${res.getDate()}일`;
+
+      });
+    }
+
+    let btn3 = document.querySelector('div#tab02 button');
+    console.log(btn3);
+
+    btn3.onclick = function(){
+      let year = document.querySelector('div#tab02 #year').value;
+      let month = document.querySelector('div#tab02 #month').value;
+      let date = document.querySelector('div#tab02 #date').value;
+      console.log(year);
+      console.log(month);
+      console.log(date);
+      let target = new Date(year, month-1, date);
+      console.log(target);
+
+      let now = new Date(); // 시스템상의 현재 시간
+
+      let diff = (target.getTime() - now.getTime()) / 1000 / 60 / 60 / 24;
+
+      // Math 객체 속의 함수
+      diff =  Math.ceil(diff);
+      document.querySelector('#tab02 #res').innerHTML = 'D-' + diff + '일';
+
+    };
+
+
+    function f(){
+      let target = document.querySelector('#tab03 #date').value;
+      let solType = document.querySelector('input[type=radio]:checked').value;
+      let start = new Date(target); // start : 입대일
+
+      //계급 구하기
+      //일병 진급일자
+      let lv2 = new Date(start.getFullYear(), start.getMonth()+2, start.getDate());
+      
+      //상병 진급일자
+      let lv3 = new Date(lv2.getFullYear(), lv2.getMonth() + 6, lv2.getDate());
+
+      //병장 진급일자
+      let lv4 = new Date(lv3.getFullYear(), lv3.getMonth() + 6, lv2.getDate());
+
+      let now = new Date();
+
+      let grade;
+      if(now < lv2){
+        grade = (solType == '4') ? '이경' : '이등병';
+      }else if(now < lv3){
+        grade = (solType == '4') ? '일경' : '일등병';
+      }else if(now < lv4){
+        grade = (solType == '4') ? '상경' : '상등병';
+      }else {
+        grade = (solType == '4') ? '수경' : '병장';
+      }
+
+      // console.log(start);
+      // start.setMonth(start.getMonth() + 18);
+      // console.log(start);
+
+      // 육군 : 18개월
+      //  해군 : 20개월, 공군 22개월 해병대 18개월 의경 18개월
+      let duration = 18; // 복무기간
+      switch(solType){
+        case '1': // 공군
+          duration += 2;
+        case '2': // 해군
+          duration += 2;
+      }
+      // 복무기간 이후의 날짜 구하기
+
+      console.log(solType)
+      console.log(duration);
+      start.setMonth(start.getMonth() + duration);
+      
+      document.querySelector('#tab03 #res').innerHTML = 
+      `전역일은 ${start.getFullYear()}년 ${start.getMonth() + 1}월 
+      ${start.getDate()}일 입니다 현재 계급은 ${grade}입니다`;
+
+    }
+
+  </script>
+</body>
+</html>

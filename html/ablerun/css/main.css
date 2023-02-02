@@ -1,0 +1,87 @@
+body, h1, h2, ul, li, a {margin: 0; padding: 0; font-size: 12px;}
+ul li{list-style: none;}
+a {color : #333; }
+#container { 
+    border: 1px solid #000;
+    width: 1024px;   
+    height: 500px;
+    margin: 0 auto;
+}
+header{
+    background-color: #ddd;
+    height: 150px;
+}
+
+#topmenu, #navi1{
+    /* border: 1px solid #ddd;     */
+}
+#topmenu li, #navi1 li{
+    /* background-color: #ddd; */
+    color: #333;
+}
+#gnb{
+    /* clear:both; */
+    margin:100px 0 0 0;
+    background-color: #333;
+    height: 30px;
+    
+}
+#gnb h2 {
+    display: none;
+}
+#gnb #navi1 {
+    width: 510px;
+    margin: 0 auto;
+    background: #0f0;
+}
+#gnb #navi1 li{
+    width: 100px;
+    float: left;
+}
+#gnb #navi1 li a{
+    background-color: #f00;
+    display: block;    
+    line-height: 30px;
+    text-align: center;
+}
+#gnb #navi1 li a:hover{
+    background-color: #000;
+    font-size: 14px;
+    color:white;
+}
+
+#navi1 li.libgcolor, #topmenu li.libgcolor {
+    border-color: rgb(143, 163, 250);
+    background-color: aqua;
+}
+
+#topmenu { 
+    width: 300px;      
+    float: right;
+    text-align: center;
+    line-height: 30px;
+    /* height: 70px;  */
+  
+}
+
+#topmenu li {
+    width: 70px;
+    height: 40px;
+    /* display:inline-block; */
+    float: left;
+    list-style: none;    
+ }
+#topmenu li a{
+    font-size: 11px;      
+}
+
+#topmenu li a:hover{
+    font-weight: bold;
+   
+}
+
+
+
+
+
+

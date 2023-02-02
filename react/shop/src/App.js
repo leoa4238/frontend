@@ -1,31 +1,24 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import data from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Semi from './routes/Semi';
 import axios from 'axios';
 
-let Colmd = (props) => {
-  return (
-    <div className='col-md-4'>
-      <img src={`https://codingapple1.github.io/shop/shoes${props.i + 1}.jpg`} width='80%' />
-      <h4>{props.shoes.title}</h4>
-      <p>{props.shoes.price}</p>
-    </div>
-  )
-}
-
+// export를 선언해야 다른 컴포넌트들이 사용할 수 있게된다
+export let Context1 = createContext() //state보관함이라고 생각한다,
 
 function App() {
   let [shoes, setShoes] = useState(data);
-  let [결과, set결과] = useState(data);
-  let navigate = useNavigate(); //페이지 이동을 도와주는 함수
+  let[재고] = useState([10,11,12])
 
+  // let [결과, set결과] = useState(data);
+  let navigate = useNavigate(); //페이지 이동을 도와주는 함수
+  
   return (
     <div className="App">
-
       
       <Navbar bg="light" variant="light" className='Daitda-header'>
         <Container>
@@ -64,7 +57,13 @@ function App() {
             }}>더보기</button>
           </>
         } />
-        <Route path='/detail/:id' element={<Semi shoes={shoes}/>} />
+                                          {/* props로 이미 전송중임 */}
+        <Route path='/detail/:id' element={
+        <Context1.Provider value={{재고}}>
+        <Semi shoes={shoes}/>
+        </Context1.Provider>
+        
+        } /> 
         
         <Route path='/about' element={<About/>}>
         <Route path='member' element={<div>member</div>} />
@@ -98,6 +97,15 @@ function Event(){
     <div>
       <h4>오늘의 이벤트</h4>
       <Outlet></Outlet>
+    </div>
+  )
+}
+let Colmd = (props) => {
+  return (
+    <div className='col-md-4'>
+      <img src={`https://codingapple1.github.io/shop/shoes${props.i + 1}.jpg`} width='80%' />
+      <h4>{props.shoes.title}</h4>
+      <p>{props.shoes.price}</p>
     </div>
   )
 }
