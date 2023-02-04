@@ -6,6 +6,8 @@ import data from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Semi from './routes/Semi';
 import axios from 'axios';
+import Cart from './routes/Cart.js'
+
 
 // export를 선언해야 다른 컴포넌트들이 사용할 수 있게된다
 export let Context1 = createContext() //state보관함이라고 생각한다,
@@ -13,7 +15,7 @@ export let Context1 = createContext() //state보관함이라고 생각한다,
 function App() {
   let [shoes, setShoes] = useState(data);
   let[재고] = useState([10,11,12])
-
+  
   // let [결과, set결과] = useState(data);
   let navigate = useNavigate(); //페이지 이동을 도와주는 함수
   
@@ -64,7 +66,8 @@ function App() {
         </Context1.Provider>
         
         } /> 
-        
+
+        <Route path='/cart' element={<Cart/>}></Route>
         <Route path='/about' element={<About/>}>
         <Route path='member' element={<div>member</div>} />
         <Route path='location' element={<div>위치정보</div>} />

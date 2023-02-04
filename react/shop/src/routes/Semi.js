@@ -83,7 +83,7 @@ function TabContent({탭}) {
     
     return()=>{
       clearTimeout(a)
-      setFade('')
+      setFade('');
     }
   },[탭]) //탭이라는 게 변경될때 마다 실행해줌
 
@@ -93,4 +93,4 @@ function TabContent({탭}) {
  </div>)
 }
 
-export default Semi;
+export default Semi;    
