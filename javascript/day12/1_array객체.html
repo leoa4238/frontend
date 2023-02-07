@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Array객체</h2>
+  <script>
+  let numbers=[10,20,30,40];
+  console.log(numbers);
+
+  // for(i of numbers){
+  //   console.log(i);
+  // }
+
+  //forEach() 함수의 인자에는 (익명)함수를 넘겨주고,
+  //그 익명 함수는 3개의 파라미터를 갖고 있다
+  //각각 element에는 배열 속 요소가 대입되고
+  //index에는 배열속 인덱스가 대입되며 
+  //array에는자기자신 배열에 대입된다
+  numbers.forEach((a,b,c)=>{//각각의 요소를 인자로 넘겨 줘야한다 (element, index, array)순으로 들어간다
+    console.log(a);
+    console.log(b);
+    console.log(c);
+    console.log('---------')
+  }); 
+
+  let res = numbers.map((value, index, array)=>{ //callbackfn=>동작시키고 싶은 함수
+    return value * 2;
+  }); //이 함수를 사용하고 나면 새로운 배열이나온다
+
+  console.log(res)
+
+  //25보다 큰 수 가져와보기
+
+  let res2 = numbers.filter((value, index, array)=>{
+    return value > 25;
+  })
+  console.log(res2);
+
+  let res3 = numbers.find((value, index)=>{
+    return value % 4 == 0;
+  })
+
+  console.log(res3);
+
+  let res4=numbers.findIndex((value, index, array)=> index > 1 && value % 4 == 0);
+  console.log(res4)
+  </script>
+</body>
+</html>

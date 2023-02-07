@@ -9,6 +9,7 @@ import store from './store.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  // 2.index.js 가서 <provider store = {store}> 쓰기
   <Provider store={store}>
     <BrowserRouter>
       {/* store.js에 있던 state 전부 사용 가능 */}

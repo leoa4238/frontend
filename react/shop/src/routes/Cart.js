@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeName, increase } from '../store';
 
 function Cart(){
+              //useSelector((state)=>{return state})가 기본임
+ let state = useSelector((state)=>{return state }) //Redux store 가져와줌 
+ let dispatch = useDispatch() 
 
- let state = useSelector((state)=>{return state }) //Redux store 가져와줌
-  console.log(state);
+  
   return(
     <div>
+      {state.user.name}{state.user.age}의 장바구니
+    <button onClick={()=>{dispatch(increase(100))}}>버튼</button>
     <Table>
       <thead>
         {/* tr은 가로칸  */}
@@ -24,9 +29,16 @@ function Cart(){
         state.cart.map((a,i)=>
           <tr key={i}>
           <td>1</td>
+
+          <td>{state.cart[i].id}</td>
           <td>{state.cart[i].name}</td>
           <td>{state.cart[i].count}</td>
           <td>안녕</td>
+          <td>
+            <button onClick={()=>{
+                dispatch(changeName())//changeName() 실행해달라고 store.js에 부탁
+            }}>+</button>
+            </td>
         </tr>
         )
         }
