@@ -29,9 +29,15 @@ let cart = createSlice({ //useState와 비슷한 역할입니다
 [
   { id: 0, name: 'White and Black', count: 2 },
   { id: 2, name: 'Grey Yordan', count: 1 }
-],
-})
+],reducers: {
+  addCount(state,action){
+    let 번호 = state.findIndex((a)=>{return a.id === action.payload })//원하는 index를 찾을 수 있게 하는 것
+    state[번호].count++
+  }
 
+}
+})
+export let {addCount} = cart.actions //갖다 쓰고 싶으면 export를 하면 됩니다
 
 //등록하는 것
 export default configureStore({ //셋팅 store.js 파일생성 &코드 복붙

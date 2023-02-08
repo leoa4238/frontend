@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeName, increase } from '../store';
+import { changeName, increase,addCount } from '../store';
 
 function Cart(){
               //useSelector((state)=>{return state})가 기본임
@@ -11,8 +11,8 @@ function Cart(){
   
   return(
     <div>
-      {state.user.name}{state.user.age}의 장바구니
-    <button onClick={()=>{dispatch(increase(100))}}>버튼</button>
+      {state.user.name}의 장바구니
+      {/* {메시지에 실어서 화물로 보내는 것을 말함} */}
     <Table>
       <thead>
         {/* tr은 가로칸  */}
@@ -28,15 +28,12 @@ function Cart(){
         {
         state.cart.map((a,i)=>
           <tr key={i}>
-          <td>1</td>
-
           <td>{state.cart[i].id}</td>
           <td>{state.cart[i].name}</td>
           <td>{state.cart[i].count}</td>
-          <td>안녕</td>
           <td>
             <button onClick={()=>{
-                dispatch(changeName())//changeName() 실행해달라고 store.js에 부탁
+                dispatch(addCount(state.cart[i].id))//changeName() 실행해달라고 store.js에 부탁
             }}>+</button>
             </td>
         </tr>

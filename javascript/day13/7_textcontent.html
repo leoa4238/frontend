@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #s1{
+      display: none;
+    }
+    #s2{
+      display:hidden;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <h2>textContent와 innerText의 차이점</h2>
+  <p>안녕하세요 <span id="s1">반가</span>워요<span id="s2">오늘은</span> 수요일입니다</p>
+  <script>
+    let target= document.querySelector('p');
+   
+   target.innerHTML='안녕'
+   
+   console.log(target.innerText);//사용자에게 보이는 텍스트 부분만 가져오기
+    console.log(target.textcontent)//사용자에게 보이지 않는 부분(소스상의 텍스트)
+    console.log(target.innerHTML);//html 코드 자체를 텍스트로 가져오기
+  </script>
+</body>
+</html>

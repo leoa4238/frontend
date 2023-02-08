@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>DOM 속성 수정</h2>
+  <ul>
+    <li>바나나</li>
+    <li>사과</li>
+  </ul>
+  <div>div태그입니다</div>
+  <img src="./myimage.png" alt="이미지입니다">
+  <script>
+    let target = document.querySelector('ul');
+    target.setAttribute('id', 'mylist'); //id를 mylist라고 추가해줘
+    target.setAttribute('class', 'li');
+    target.setAttribute('class', 'li2'); //추가가 아닌 수정
+    target.setAttribute('class', ' ');
+    target.setAttribute('class', 'li li02'); //두개 클래스 사용 가능
+
+    let myDiv = document.querySelector('div');
+    let newAtt = document.createAttribute('class'); 
+    console.log(newAtt);
+    newAtt.value = 'div1';
+
+    myDiv.setAttributeNode(newAtt);
+    let newAtt2 = document.createAttribute('class');
+    newAtt2.value = 'div2'
+
+    myDiv.setAttributeNode(newAtt2); //속성을 설정해준다
+
+    console.log(myDiv)
+    myDiv.attributes[0].value = 'div3'
+
+    myDiv.classList.add('div4');
+
+    myDiv.id = 'myId';
+
+
+    //태그객체 찾기
+    let myImg = document.querySelector('img');
+    console.log(myImg);
+    console.log(myImg.getAttribute('src')); //찾아와준다
+  </script>s
+</html>

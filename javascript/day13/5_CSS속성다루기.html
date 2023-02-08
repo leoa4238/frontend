@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    div{
+      border: 1px solid black;
+      height: 200px;
+      width: 200px;
+      margin:0 auto;
+      text-align: center
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <h2>css속성 다루기</h2>
+  <div style="color: blue;">
+    div태그입니다
+  </div>
+ <script>
+ let target =  document.getElementsByTagName('div')[0]; //elements이기 때문에 배열에 들어있다
+ console.log(target);
+ 
+ //  target.setAttribute('style', 'background-color:red; color:white;');
+ 
+ console.log(target.style.color); //인라인만 적용시킨 스타일만 가지고 있다
+ target.style.width = '100px'
+ //css속성 이름에 -가 붙은 애들은 다 대문자로 바꾼 카멜표기법 활용
+ target.style.backgroundColor = 'red';
+ </script>
+</body>
+</html>
