@@ -27,7 +27,8 @@ function App() {
           <Navbar.Brand href="#home">Daitda</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{ navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('./Detail')}}>detail</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./Detail/0')}}>detail</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./Cart')}}>Cart</Nav.Link>
           </Nav>
         </Container>
         </Navbar>

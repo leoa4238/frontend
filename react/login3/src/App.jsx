@@ -1,19 +1,21 @@
 import styled from 'styled-components'
-import {SiNaver} from 'react-icons/si'
+import { SiNaver } from "react-icons/si"
 import { RiKakaoTalkFill } from "react-icons/ri";
 import Input from './components/Input'
 import Button from './components/Button';
 import Icon from './components/Icon'
 
 
- function App() {
-  const NaverBackground = 'linear-gradient(to right, #0546A0 0%, #663FB6 100%)'
+function App() {
+  const NaverBackground = "linear-gradient(to right, #19ce60 0%, #19ce60 40%, #19ce60 100%)";
+  const KakaoBackground = "linear-gradient(to right, #F7E600 0%, #F7E600 40%, #F7E600 100%)"
+  
   return (
   <MainContainer>
     <WelcomeText>Welcome</WelcomeText>
     <InputContainer>
-    <Input type='text' placeholder="Email"/>
-    <Input type='password' placeholder="password"/>
+    <Input type="text" placeholder="Email"/>
+    <Input type="password" placeholder="password"/>
     </InputContainer>
     <ButtonContainer>
       <Button content="sign up"/>
@@ -21,9 +23,12 @@ import Icon from './components/Icon'
     <LoginWith>Or 간편로그인</LoginWith>
     <HorizontalRule/>
     <IconsContainer>
-      {/* <Icon color={NaverBackground}>
-        {/* <SiNaver/> */}
-      {/* </Icon> */} 
+        <Icon color={NaverBackground}>
+          <SiNaver/> 
+        </Icon> 
+        <Icon color={KakaoBackground}>
+          <RiKakaoTalkFill/> 
+        </Icon> 
     </IconsContainer>
     <ForgotPassword>비밀번호를 잊어버리셨나요 ?</ForgotPassword>
   </MainContainer>
@@ -43,9 +48,43 @@ const MainContainer = styled.div`
   border-radius: 10px;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 0.4rem;`
-
-
+  letter-spacing: 0.4rem;
+  @media only screen and (max-width:320px){
+    width: 80vw;
+    height: 90vh;
+    hr {
+      margin-bottom: 0.3rem;
+    }
+    h4{
+      font-size: small;
+    }
+  }
+  @media only screen and (max-width:360px){
+    width: 80vw;
+    height: 90vh;
+  
+    h4{
+      font-size: small;
+    }
+  }
+  @media only screen and (max-width:411px){
+    width: 80vw;
+    height: 90vh;
+  }
+  @media only screen and (max-width:768px){
+    width: 80vw;
+    height: 80vh;
+  }
+  @media only screen and (max-width:1024px){
+    width: 70vw;
+    height: 50vh;
+  }
+  @media only screen and (max-width:1280px){
+    width: 30vw;
+    height: 80vh;
+  }
+  `
+  
 const WelcomeText = styled.h2`
   margin: 3rem 0 2rem 0;
 `;

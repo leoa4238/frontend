@@ -6,6 +6,9 @@ import './Semi.css';
 import Nav from 'react-bootstrap/Nav';
 import App from '../App.js' 
 import {Context1} from '../App.js'
+import { addItem } from './../store';
+import { useDispatch } from 'react-redux';
+
 
 function Semi(props) {
 
@@ -15,6 +18,8 @@ function Semi(props) {
   let [alert, setAlert] = useState(true);
   let [탭, 탭변경] = useState(0);
   let [num, setNum] = useState('');
+  let dispatch = useDispatch();
+
   useEffect(() => { //mount, update시 실행됨
     let a = setTimeout(() => { setAlert(false) }, 2000)
     return () => {//useEffect 동작전에 실행되는 것 return()=>{}
@@ -54,7 +59,9 @@ function Semi(props) {
           <h4 className="pt-5">{찾은상품.title}</h4>
           <p>{찾은상품.content}</p>
           <p>{찾은상품.price}원</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button className="btn btn-danger" onClick={()=>{
+            dispatch(addItem({id: 1, name: 'Red Knit', count: 1}))
+          }}>주문하기</button>
         </div>
       </div>   {/*처음 만든 키를 눌려있게 하고 싶으면 defaltActiveKey를 사용한다*/}
       
