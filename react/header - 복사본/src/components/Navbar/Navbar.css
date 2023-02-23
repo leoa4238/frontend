@@ -1,0 +1,35 @@
+.NavBar {
+  padding: 20px 0;
+  background-color: #A7BFFD;
+}
+
+#Logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#login {
+  margin-right: auto;
+}
+
+.login2 {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 991.98px) {
+  .home,
+  .job,
+  .career,
+  .study {
+    display: none;
+  }
+
+  #login {
+    margin-right: 0;
+  }
+
+  .login {
+    margin-right: auto;
+  }
+}

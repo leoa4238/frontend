@@ -2,29 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 export const Header = styled.section`
-width: 100%;
-height: 80vh;
-position: relative;
+width: 188px;
+height: 48px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 150%;
+/* identical to box height, or 48px */
+
 display: flex;
-justify-content: center;
-overflow: hidden;
 align-items: center;
-&::before{
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0%;
-  left: 0;
-  max-width: 100%;
-  min-height: 40px;
-  display: inline-block;
-  border-radius: 0 0 50% 50%/ 0 0 100% 100%;
-  transform: scaleX(1.5);
-  background-position: right top;
-  background-size: 100vw 90vh;
-  background-color: #282c34;
-}
+letter-spacing: -0.03em;
+
+color: #032363;
+
 `
 
 export const MainHeader = styled.div`

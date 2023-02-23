@@ -1,0 +1,7 @@
+.navbar{
+  display: flex;
+}
+
+.navbar__menu{
+  display: inline-block;
+}
