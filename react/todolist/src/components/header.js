@@ -3,7 +3,11 @@ import logo from "../assets/192.png"
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
-const Header = ({subtitle, detail}) => {
+const Header = ({subtitle, detail, menuOpen, setMenuOpen}) => {
+
+  const menuClick=()=>{ //3. menuClick이 false에서 true로 바꿔준다
+    setMenuOpen(true)
+  }
 
   return (
     <HeaderWrap>
@@ -13,7 +17,7 @@ const Header = ({subtitle, detail}) => {
       <img src={logo} alt="로고"/>
       <h1>React 안성현</h1>
       </div>
-      <MenuIcon></MenuIcon>
+      <MenuIcon onClick={menuClick}></MenuIcon>
     </HeaderNav>
       <h1>도전 리엑트 뿌시기!</h1>
       <h2>{subtitle}</h2>

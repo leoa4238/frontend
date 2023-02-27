@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import companyLogo from '../img/icon.png';
 import MusicLogo from '../img/backgroundimg.png';
+import Search from '.././components/Search';
+import OptBox from '../components/Card';
+
 const Home = () => {
   return (
     <>
@@ -15,11 +18,19 @@ const Home = () => {
       </Container>
       <Icon src={companyLogo} alt="Icon img" />
       <MusicMg src={MusicLogo} alt ="symbol"/>
+      <SearchBarWrapper>
+        <Search placeholder="Search" />
+      </SearchBarWrapper>
+    <OptBox></OptBox>
     </>
   )
 }
 
-
+const SearchBarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* 아이콘 보다 20px 아래에 위치 */
+`;
 const MusicMg = styled.img`
 position: absolute;
 width: 1035.5px;

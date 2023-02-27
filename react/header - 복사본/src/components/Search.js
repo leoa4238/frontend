@@ -1,26 +1,52 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { FiSearch } from "react-icons/fi";
 
-const SearchBar = styled.input`
-  padding: 8px;
-  width: 100%;
-  font-size: 16px;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 0 0 2px #a7bffdbf;
-`;
-
-const SearchBox = styled.div`
-  width: 300px;
-  margin: 0 auto;
-`;
-
-const Search = () => {
+const SearchBar = () => {
   return (
-    <SearchBox>
-      <SearchBar type="text" placeholder="검색어를 입력하세요" />
-    </SearchBox>
+    <Wrapper>
+      <Input type="text" placeholder="Search..." />
+      <SearchButton/>
+    </Wrapper>
   );
 };
 
-export default Search;
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 561px;
+  height: 132px;
+  margin: 32px auto;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  @media screen and (max-width: 768px) {
+    margin: 32px 0;
+  }
+`;
+
+
+const Input = styled.input`
+  flex-grow: 1;
+  height: 50%;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+
+  &:focus {
+    box-shadow: inset 0px 0px 0px 2px #90caf9;
+  }
+`;
+
+const SearchButton = styled(FiSearch)`
+ font-size: 24px;
+  color: #777;
+  cursor: pointer;
+`;
+export default SearchBar;

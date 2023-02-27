@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import VirtualizedList from "./list";
+import CloseIcon from "@mui/icons-material/Close";
 
 
-
-const SideBar=()=>{
+const SideBar=({menuOpen, setMenuOpen})=>{  
   return (
-    <SideBarWrap>
+    <SideBarWrap menuOpen={menuOpen}>
+      <MyClose onClick={()=>setMenuOpen(false)}/>
       <VirtualizedList></VirtualizedList>
     </SideBarWrap>
   );
@@ -13,12 +14,21 @@ const SideBar=()=>{
 
 export default SideBar;
 
+const MyClose = styled(CloseIcon)`
+  padding: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+`
+
 const SideBarWrap = styled.div`
   position: fixed;
   width: 300px;
   height: 100%;
   background-color: #fff;
   right: 0;
-  top: 60px;
-  z-index: 1;
+  top: 0;
+  z-index: 5;
+  transform: translateX(300px) ${({menuOpen})=>menuOpen && 'translateX(-300px)'};
+  transition: 1s;
   `

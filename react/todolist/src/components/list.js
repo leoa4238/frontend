@@ -5,7 +5,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { FixedSizeList } from 'react-window';
 import {paths} from '../assets/constant'
-import { useNavigate } from 'react-router-dom';
 
 function renderRow(props) {
   console.log('renderRow() 함수 실행됨')
@@ -34,8 +33,8 @@ export default function VirtualizedList() {
       <FixedSizeList
         height={600}
         width={360}
-        itemSize={46}
-        itemCount={4}
+        itemSize={80}
+        itemCount={paths.length}
         overscanCount={5}
       >
         {renderRow}
