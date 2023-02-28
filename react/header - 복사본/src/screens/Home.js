@@ -20,8 +20,8 @@ const Home = () => {
       <MusicMg src={MusicLogo} alt ="symbol"/>
       <SearchBarWrapper>
         <Search placeholder="Search" />
+      <OptBox></OptBox>
       </SearchBarWrapper>
-    <OptBox></OptBox>
     </>
   )
 }
@@ -29,7 +29,7 @@ const Home = () => {
 const SearchBarWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* 아이콘 보다 20px 아래에 위치 */
+  margin-top: -100px; /* 아이콘 보다 20px 아래에 위치 */
 `;
 const MusicMg = styled.img`
 position: absolute;

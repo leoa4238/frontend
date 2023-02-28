@@ -2,6 +2,59 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 
+const NavbarElements = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleMenuClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+      <NavbarContainer>
+        <Logo href="/">Muse Market</Logo>
+        <Nav open={isOpen}>
+          <NavItem>
+            <NavLink href="/">홈</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/About">구인/구직</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/Project">이력서</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/Questions">스터디</NavLink>
+          </NavItem>
+          <NavItem>
+            <DropDown>
+              <DropDownBtn>커뮤니티</DropDownBtn>
+              <DropDownContent>
+                <DropDownItem href="#">채팅</DropDownItem>
+                <DropDownItem href="#">인터뷰</DropDownItem>
+                <DropDownItem href="#">자유게시판</DropDownItem>
+                <DropDownItem href="#">공연정보</DropDownItem>
+              </DropDownContent>
+            </DropDown>
+          </NavItem>
+          {/* 로그인과 회원가입 메뉴를 추가 */}
+          <NavItem>
+            <NavLink href="/login">로그인</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="">회원가입</NavLink>
+          </NavItem>
+        </Nav>
+        <HamburgerMenu onClick={handleMenuClick}>
+          <div />
+          <div />
+          <div />
+        </HamburgerMenu>
+      </NavbarContainer>
+    );
+};
+
+export default NavbarElements;
+
 const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -153,7 +206,7 @@ const HamburgerMenu = styled.div`
     width: 100%;
     height: 3px;
     background-color: #fff;
-    transition: all 0.3s linear;
+    transition: all 13s linear;
     position: relative;
     transform-origin: 1px;
 
@@ -171,57 +224,3 @@ const HamburgerMenu = styled.div`
     }
   }
 `;
-
-
-const NavbarElements = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleMenuClick = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-      <NavbarContainer>
-        <Logo href="/">Muse Market</Logo>
-        <Nav open={isOpen}>
-          <NavItem>
-            <NavLink href="/">홈</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/About">구인/구직</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/Project">이력서</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/Questions">스터디</NavLink>
-          </NavItem>
-          <NavItem>
-            <DropDown>
-              <DropDownBtn>커뮤니티</DropDownBtn>
-              <DropDownContent>
-                <DropDownItem href="#">채팅</DropDownItem>
-                <DropDownItem href="#">인터뷰</DropDownItem>
-                <DropDownItem href="#">자유게시판</DropDownItem>
-                <DropDownItem href="#">공연정보</DropDownItem>
-              </DropDownContent>
-            </DropDown>
-          </NavItem>
-          {/* 로그인과 회원가입 메뉴를 추가 */}
-          <NavItem>
-            <NavLink href="/login">로그인</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="">회원가입</NavLink>
-          </NavItem>
-        </Nav>
-        <HamburgerMenu onClick={handleMenuClick}>
-          <div />
-          <div />
-          <div />
-        </HamburgerMenu>
-      </NavbarContainer>
-    );
-};
-
-export default NavbarElements;
