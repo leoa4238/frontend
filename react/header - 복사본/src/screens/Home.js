@@ -28,8 +28,14 @@ const Home = () => {
 
 const SearchBarWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-top: -100px; /* 아이콘 보다 20px 아래에 위치 */
+  
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 const MusicMg = styled.img`
 position: absolute;
@@ -114,6 +120,7 @@ const Backgr = styled.button`
   &:hover{  
     background-color: #ADADAD;
     color : #FFFFFF;
+    transition: 0.4s;
   }
 `
 

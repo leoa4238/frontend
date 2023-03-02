@@ -5,8 +5,10 @@ const SearchBar = () => {
   return (
     <Wrapper>
       <Title>전체검색</Title>
-      <Input type="text" placeholder="Search..." ></Input>
-      <SearchButton />
+      <Container>
+        <Input type="text" placeholder="Search..." />
+        <SearchButton />
+      </Container>
     </Wrapper>
   );
 };
@@ -19,7 +21,7 @@ const Title = styled.div`
   top: 0;
   left: 0;
   color: grey;
-  
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -45,6 +47,17 @@ const Wrapper = styled.div`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
 const Input = styled.input`
   flex-grow: 1;
   height: 40%;
@@ -64,6 +77,8 @@ const Input = styled.input`
     margin-right: 0;
     margin-bottom: 1rem;
     height: 40px;
+    flex-grow: unset;
+    width: 70%;
   }
 `;
 
@@ -71,6 +86,11 @@ const SearchButton = styled(FiSearch)`
   font-size: 24px;
   color: #777;
   cursor: pointer;
+  width: 30%;
+
+  @media screen and (max-width: 768px) {
+    width: unset;
+  }
 `;
 
 export default SearchBar;

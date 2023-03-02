@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 
+
 const NavbarElements = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -61,6 +62,7 @@ const NavbarContainer = styled.nav`
   align-items: center;
   padding: 20px 0;
   background-color: rgba(167, 191, 253, 0.8);
+ 
   @media screen and (max-width: 768px) {
   flex-direction: column;
   align-items: flex-start;
@@ -72,13 +74,13 @@ const Logo = styled.a`
   font-weight: bold;
   color: #fff;
   text-decoration: none;
+  transition: all 1s;
 `;
 
 const Nav = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
-
     @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
@@ -91,7 +93,6 @@ const Nav = styled.ul`
 
 const NavItem = styled.li`
   margin-right: 20px;
-
   &:last-child {
     margin-right: 0;
   }
@@ -101,13 +102,13 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled.a`
+  transition: all 1s;
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100px;
-
   &:hover {
     text-decoration: none;
   }
@@ -127,7 +128,6 @@ const SignUp = styled.a`
 
 const MenuIcon = styled.div`
   display: none;
-
   @media (max-width: 768px) {
     display: block;
     cursor: pointer;
@@ -162,6 +162,7 @@ const DropDownItem = styled.a`
   `;
   
   const DropDownBtn = styled.a`
+  transition: all 1s;
   color: #fff;
   text-decoration: none;
   /* padding: 10px; */
@@ -178,8 +179,7 @@ const HamburgerIcon = styled.div`
   height: 3px;
   background-color: #fff;
   margin: 5px 0;
-  transition: 1s;
-
+  transition: all 1s;
   ${(props) =>
     props.open ? `
       transform: rotate(-45deg);
@@ -193,6 +193,7 @@ const HamburgerIcon = styled.div`
       }
     ` : ''}
 `;
+
 const HamburgerMenu = styled.div`
   display: flex;
   flex-direction: column;
@@ -206,19 +207,16 @@ const HamburgerMenu = styled.div`
     width: 100%;
     height: 3px;
     background-color: #fff;
-    transition: all 13s linear;
+    transition: all 1s linear;
     position: relative;
     transform-origin: 1px;
-
     &:first-child {
       transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};
     }
-
     &:nth-child(2) {
       opacity: ${({ open }) => (open ? '0' : '1')};
       transform: ${({ open }) => (open ? 'translateX(20px)' : 'translateX(0)')};
     }
-
     &:nth-child(3) {
       transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
     }

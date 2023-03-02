@@ -6,12 +6,10 @@ const OptBox = () => {
       <Wrapper>
         <div>
           <Title>이번주 인기 분야</Title>
-          <Btn>음악</Btn>
           <Btn>미술</Btn>
           <Btn>체육</Btn>
           <Btn>연기</Btn>
           <Btn>뮤지컬</Btn>
-          <Btn>헬스</Btn>
         </div>
       </Wrapper>
     </>
@@ -22,6 +20,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 561px;
   height: 132px;
@@ -34,8 +33,7 @@ const Wrapper = styled.div`
   @media screen and (max-width: 768px) {
     margin: 32px 0;
   }
-`;
-
+`
 const Title = styled.div`
   font-size: 16px;
   font-weight: bold;
@@ -43,11 +41,19 @@ const Title = styled.div`
 `;
 
 const Btn = styled.button`
-  background: #e9e9e9;
+  /* background: #e9e9e9; */
   box-shadow: 0px 3.76471px 3.76471px rgba(0, 0, 0, 0.1);
-  border-radius: 3.76471px;
-  border-style: hidden;
-  margin-right: 8px;
+  border-radius: 5px;
+  border: 1px none #ccc;
+  background-color: #e9e9e9;
+  padding: 8px 16px;
+  margin: 5px 8px;
+
+  &:hover {
+    background-color: #0D6EFD;
+    display: inline-block;
+    transition: 1s;
+  }
 `;
 
 export default OptBox;
