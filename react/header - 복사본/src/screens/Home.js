@@ -79,11 +79,9 @@ const Mainmg2 = styled.h3`
   opacity: calc(45%);
   color: #1A202C;
   font-size: 20px;
-
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
-
   @media screen and (max-width: 600px) {
     font-size: 14px;
   }
@@ -95,7 +93,6 @@ const ButtonsWrapper = styled.div`
   top: 500px;
   display: flex;
   gap: 20px;
-
   @media screen and (max-width: 768px) {
     left: 50%;
     transform: translateX(-50%);

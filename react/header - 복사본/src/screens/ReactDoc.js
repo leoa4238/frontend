@@ -2,7 +2,7 @@ import React from 'react'
 
 const ReactDoc = () => {
   return (
-    <div><h1>ReactDoc</h1></div>
+    <h2>Job Search</h2>
   )
 }
 

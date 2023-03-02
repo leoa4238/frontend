@@ -11,6 +11,7 @@ const NavbarElements = () => {
   };
 
   return (
+      
       <NavbarContainer>
         <Logo href="/">Muse Market</Logo>
         <Nav open={isOpen}>
@@ -21,7 +22,7 @@ const NavbarElements = () => {
             <NavLink href="/About">구인/구직</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/Project">이력서</NavLink>
+            <NavLink href="/Membership">이력서</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/Questions">스터디</NavLink>
