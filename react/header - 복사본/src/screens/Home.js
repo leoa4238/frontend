@@ -5,6 +5,7 @@ import MusicLogo from '../img/backgroundimg.png';
 import Search from '.././components/Search';
 import OptBox from '../components/Card';
 
+
 const Home = () => {
   return (
     <>
@@ -43,6 +44,9 @@ width: 1035.5px;
 height: 708px;
 left: 900.5px;
 top: 128px;
+@media screen and (max-width:650px){
+  display: none;
+}
 `
 
 

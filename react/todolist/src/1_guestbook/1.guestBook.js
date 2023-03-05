@@ -1,5 +1,5 @@
 //방명록 페이지로 사용할 것이다
-import { useState } from 'react';
+import { useRef,useState } from 'react';
 import Header from '../components/header'
 import SideBar from '../components/sideBar'
 import styled from 'styled-components';
@@ -8,19 +8,50 @@ import { IconButton } from '@mui/material';
 
 const GuestBookPage =()=>{
   const [menuOpen, setMenuOpen]= useState(false)
- const [names, setNames] = useState(['안성현','김철수','홍길동']);
- const [inputTxt, setInputTxt] = useState('')
- const nameList = names.map((value)=><GuestBookListCard>{value}<IconButton><Close/></IconButton></GuestBookListCard>);
+  const [names, setNames] = useState(['안성현','김철수','홍길동']); //1.배열을 만들어놨다
+  const [inputTxt, setInputTxt] = useState('')
+  const nameInput = useRef(null)
+  
+  const onCancel = (e) =>{
+    console.log('x버튼 클릭됨')
+    console.log(e)
+    let tmp = e.target.value;
+    let ar = names.filter(value => value != tmp);
+    setNames(ar);
+ }
+  const nameList = names.map((value)=> <GuestBookListCard>{value}<IconButton value={value} onClick={onCancel}><Close/></IconButton></GuestBookListCard>);
+  
    // input 태그에 입력 된 값이 변화할 때마다 실행되는 함수
    const inputChange = (e) =>{
         //매개변수 e에는 event관련 객체가 들어 있다
         //어떤 태그에서 발생한 이벤트인지, x축, y축, 이벤트 종류,....
-        setInputTxt(e.target.value)
+    let tmp = setInputTxt(e.target.value) //인풋태그 안에 들어있는 값을 받아오고 있는 것이다 
+    
    }
    const buttonClick = ()=>{
-    let tmp = names;
-    tmp.push(inputTxt)
-    setNames(tmp)
+    //input 태그 속 내용이 비어있다면 alert()함수를 실행하여 필수값  입력하고 이야기 한 후 함수 종료
+    // if(inputTxt){
+    //   alert('필수입력값입니다')
+    //   return;
+    // }
+    
+
+    if(!nameInput.current.value){
+      alert('필수입력값입니다!')
+      return;
+    }
+
+    let tmp = [...names, inputTxt]; //기존에 들어있는 값에다가 입력한값까지해서 추가되고
+    setNames(tmp) //바뀌고
+    setInputTxt('') //inputtxt값을 빈 문자열로 바꿔줘 value가 존재하기때문에 '이름을 입력이 뜨는 것이다'
+    //input 태그를 찾아서 focus 시키기
+    // let target = document.querySelector('input')
+    // console.log(target.focus)
+    // target.focus();   ===> 절대 이렇게 쓰지 않는다
+
+    console.log(nameInput.current);
+    nameInput.current.focus()
+
    }
 
   return (
@@ -35,7 +66,13 @@ const GuestBookPage =()=>{
     <ContentWrap>
       <h2>방명록</h2>
       <InputDiv>
-      <input onChange={inputChange} type={'text'} placeholder={'이름을 입력'}></input>
+      <input 
+      ref={nameInput}
+      onChange={inputChange}
+       type={'text'}
+       placeholder={'이름을 입력'}
+       value={inputTxt}
+        ></input>
       <button type='button' onClick={buttonClick}>추가하기</button>
       </InputDiv>
       {nameList}

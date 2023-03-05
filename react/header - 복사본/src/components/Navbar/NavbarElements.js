@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import ArtLogo from '../../img/artnjob.png';
 import { useState } from "react";
 
 
 const NavbarElements = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-      
       <NavbarContainer>
-        <Logo href="/">Muse Market</Logo>
+
+        <Logo href="/">
+        <img src={ArtLogo} alt="Art n Job 로고" />
+          Art n Job</Logo>
         <Nav open={isOpen}>
           <NavItem>
             <NavLink href="/">홈</NavLink>
@@ -43,7 +45,7 @@ const NavbarElements = () => {
             <NavLink href="/login">로그인</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="">회원가입</NavLink>
+            <NavLink href=""><button>회원가입</button></NavLink>
           </NavItem>
         </Nav>
         <HamburgerMenu onClick={handleMenuClick}>
@@ -71,11 +73,19 @@ const NavbarContainer = styled.nav`
 `;
 
 const Logo = styled.a`
+  font-family: 'Plus Jakarta Sans';
+  font-size: 32px;
   font-size: 2rem;
   font-weight: bold;
   color: #fff;
   text-decoration: none;
   transition: all 1s;
+  img {
+    padding-right: 10px;
+    padding-left: 30px;
+    height: 2.5rem;
+    margin-right: 0.5rem;
+  }
 `;
 
 const Nav = styled.ul`
@@ -93,9 +103,10 @@ const Nav = styled.ul`
 `;
 
 const NavItem = styled.li`
+  margin-left: 30px;
   margin-right: 20px;
   &:last-child {
-    margin-right: 0;
+    margin-right: 40;
   }
    @media (max-width: 768px) {
     margin: 10px 0;
@@ -110,30 +121,32 @@ const NavLink = styled.a`
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100px;
+
+  button {
+    width: 98px;
+    height: 31px;
+    left: 685px;
+    top: 4px;
+    background: #FFFFFF;
+    border-radius: 3.76471px;
+    border-style: none;
+    transition: all 1s;
+    &:hover{
+      color: #0a58ca;
+    }
+  }
+
+  @media (max-width: 768px) {
+    button {
+      display: none;
+    }
+  }
+
   &:hover {
     text-decoration: none;
   }
 `;
 
-const Login = styled.a`
-  margin-left: auto;
-  color: #fff;
-  text-decoration: none;
-  margin-right: 20px;
-`;
-
-const SignUp = styled.a`
-  color: #fff;
-  text-decoration: none;
-`;
-
-const MenuIcon = styled.div`
-  display: none;
-  @media (max-width: 768px) {
-    display: block;
-    cursor: pointer;
-  }
-`;
 
 const DropDownContent = styled.div`
   display: none;
@@ -170,30 +183,6 @@ const DropDownItem = styled.a`
   cursor: pointer;
 `;
 
-const DropDownLink = styled(NavLink)`
-  display: block;
-  padding: 10px;
-`;
-
-const HamburgerIcon = styled.div`
-  width: 25px;
-  height: 3px;
-  background-color: #fff;
-  margin: 5px 0;
-  transition: all 1s;
-  ${(props) =>
-    props.open ? `
-      transform: rotate(-45deg);
-      background-color: rgba(0, 0, 0, 0);
-      &:nth-child(2) {
-        transform: rotate(45deg);
-      }
-      &:nth-child(3) {
-        transform: rotate(-45deg);
-        background-color: rgba(0, 0, 0, 0);
-      }
-    ` : ''}
-`;
 
 const HamburgerMenu = styled.div`
   display: flex;
@@ -222,4 +211,7 @@ const HamburgerMenu = styled.div`
       transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
     }
   }
+  @media (min-width: 768px) { /* 768px 이상의 화면 크기에 대해 적용 */
+    display: none; /* 숨김 */
+}
 `;

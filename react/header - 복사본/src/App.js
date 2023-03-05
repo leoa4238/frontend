@@ -8,6 +8,8 @@ import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import NavbarElements from './components/Navbar/NavbarElements';
 import { createGlobalStyle } from "styled-components";
+
+
 function App() {
   return (
   <>
