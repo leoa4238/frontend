@@ -28,6 +28,7 @@ const Title = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

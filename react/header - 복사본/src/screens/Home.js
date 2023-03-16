@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import styled from 'styled-components'
 import companyLogo from '../img/icon.png';
 import MusicLogo from '../img/backgroundimg.png';
@@ -7,6 +7,10 @@ import OptBox from '../components/Card';
 
 
 const Home = () => {
+  useEffect(() => {
+    console.log("OptBox 생성");
+  }, []);
+
   return (
     <>
       <Container>
@@ -21,13 +25,15 @@ const Home = () => {
       <MusicMg src={MusicLogo} alt ="symbol"/>
       <SearchBarWrapper>
         <Search placeholder="Search" />
-      <OptBox></OptBox>
+        <OptBox></OptBox>
       </SearchBarWrapper>
     </>
-  )
-}
+  );
+};
+export default Home;
 
 const SearchBarWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -65,7 +71,7 @@ const Container = styled.div`
 `
 
 const Mainmg = styled.h1`
-  position: absolute;
+  position: relative;
   width: 491px;
   height: 42px;
   left: 76px;
@@ -103,9 +109,10 @@ const ButtonsWrapper = styled.div`
     top: 590px;
   }
   z-index: 1; // 새로운 속성 추가
-`;
+  `;
 
 const Backgr = styled.button`
+  position: relative;
   border: none;
   display: flex;
   flex-direction: row;
@@ -133,4 +140,3 @@ const DetailBtn = styled.button`
   text-decoration: none;
   cursor: pointer;
 `
-export default Home;

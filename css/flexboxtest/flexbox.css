@@ -1,0 +1,73 @@
+/* vh 부모에 상관없이 나는 100%쓰겠다 하는 것이다 */
+
+.container{
+  padding-top: 100px;
+  background: beige;
+  height: 100vh; 
+  display: flex;
+  /* row 왼쪽에서 오른쪽으로가는 것 */
+  /* flex-direction: row;
+  flex-wrap: nowrap;
+  /* flex-flow: column nowrap; */
+  /* justify-content: space-between;
+  /* 반대축을 어떻게 할건지 */
+  /*align-items: stretch;  */
+  /* align-items:  */
+}
+
+.item{  
+height: 40px;
+width: 40px;
+border: 1px solid black;
+}
+
+.item1{
+  background: #ef9a9a;
+  padding: 20px;
+  flex-grow: 2;
+  flex-shrink: 2;
+
+}
+
+.item2{
+  background: #f48fb1;
+  height: 100px;
+  width: 100px;
+  /* 컨테이너가 커지면 어쩔수없이 점점 작아질 수 있다 */
+  flex-grow: 1;
+  flex-basis: 60%;
+}
+
+.item3{
+  background: #ce93d8;
+  flex-grow: 1;
+  
+}
+
+.item4{
+  background: #b39ddb;
+}
+
+.item5{
+  background: #90caf9;
+}
+
+.item6{
+  background: #a5d6a7;
+}
+
+.item7{
+  background: #e6ee9c;
+}
+
+.item8{
+  background: red;
+}
+
+.item9{
+  background: white;
+}
+
+.item10{
+  background: aquamarine;
+}

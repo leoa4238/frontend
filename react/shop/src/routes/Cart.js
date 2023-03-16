@@ -1,14 +1,20 @@
-import { useState } from 'react';
+import { memo, useState, useMemo } from 'react';
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName, increase,addCount } from '../store';
 
+// function 함수(){
+//   return 반복문10억번돌린결과
+// }
+
+
 function Cart(){
-              //useSelector((state)=>{return state})가 기본임
+             
+  // let result = useMemo(()=>{return 함수()}, []) //dependency 안에 state가 들어갈경우에는 이때만 실행시켜주세요!
+  //useSelector((state)=>{return state})가 기본임
  let state = useSelector((state)=>{return state }) //Redux store 가져와줌 
  let dispatch = useDispatch() 
 
-  
   return(
     <div>
       {state.user.name}의 장바구니
