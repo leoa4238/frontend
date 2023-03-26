@@ -5,6 +5,7 @@ import SchedulerTemplate from './3_schedularTemplate';
 import SchedulerCalendar from './4_schedularCalendar';
 import dayjs from 'dayjs'
 import SchedularContent from './5_schedularContent';
+import BottomSheet from './8_bottomSheet';
 
 
 const initialData = 
@@ -46,7 +47,6 @@ const initialData =
             sTime:'10:00',
             eTime:'11:00', 
           },
-          '20230315'
         ],    
 }
 
@@ -77,7 +77,7 @@ const getCompletedCnt = (date,ScheduleList)=>{
 const MainPage= (props)=>{
     const [date, setDate,] = useState(dayjs())
     const [ScheduleList, setScheduleList] =useState(initialData);
-    
+    const [isOpen, setIsOpen] = useState(false);
     const ScheduleCnt = getScheduleCnt(date,ScheduleList);
     const CompleteCnt = getCompletedCnt(date,ScheduleList)
     return(
@@ -86,12 +86,20 @@ const MainPage= (props)=>{
             <SchedulerTemplate>
                 <SchedulerCalendar ScheduleCnt={ScheduleCnt} date={date} setDate={setDate} />
                 <SchedularContent 
+                setIsOpen={setIsOpen}
                 setScheduleList ={setScheduleList}
                 CompleteCnt = {CompleteCnt}
                 ScheduleCnt ={ScheduleCnt}
                 ScheduleList={ScheduleList} 
                 date={date}/>
             </SchedulerTemplate>
+            <BottomSheet 
+            ScheduleList={ScheduleList} 
+            setScheduleList={setScheduleList} 
+            setIsOpen={setIsOpen} 
+            isOpen={isOpen}
+            date={date}
+            />
         </MainWrap>
     );
 }

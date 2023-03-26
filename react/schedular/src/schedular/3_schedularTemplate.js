@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const SchedulerTemplate = ({children})=>{
+const SchedulerTemplate = ({ children }) => {
   return (
-      <SchedulerTemplateWrap>
-          {children}
-      </SchedulerTemplateWrap>
+    <SchedulerTemplateWrap>
+      {children}
+    </SchedulerTemplateWrap>
   );
 
 }

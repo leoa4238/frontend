@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ArtLogo from '../../img/artnjob.png';
+import ArtLogo from '../../img/폰포튼 1.png';
 import { useState } from "react";
 
 
@@ -12,10 +12,9 @@ const NavbarElements = () => {
 
   return (
       <NavbarContainer>
-
         <Logo href="/">
         <img src={ArtLogo} alt="Art n Job 로고" />
-          Art n Job</Logo>
+        </Logo>
         <Nav open={isOpen}>
           <NavItem>
             <NavLink href="/">홈</NavLink>
@@ -24,28 +23,16 @@ const NavbarElements = () => {
             <NavLink href="/About">구인/구직</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/Membership">이력서</NavLink>
+            <NavLink href="/Membership">스터디</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/Questions">스터디</NavLink>
+            <NavLink href="/Questions">커뮤니티</NavLink>
           </NavItem>
-          <NavItem>
-            <DropDown>
-              <DropDownBtn>커뮤니티</DropDownBtn>
-              <DropDownContent>
-                <DropDownItem href="#">채팅</DropDownItem>
-                <DropDownItem href="#">인터뷰</DropDownItem>
-                <DropDownItem href="#">자유게시판</DropDownItem>
-                <DropDownItem href="#">공연정보</DropDownItem>
-              </DropDownContent>
-            </DropDown>
-          </NavItem>
-          {/* 로그인과 회원가입 메뉴를 추가 */}
           <NavItem>
             <NavLink href="/login">로그인</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href=""><button>회원가입</button></NavLink>
+            <NavLink href="/membership"><button>회원가입</button></NavLink>
           </NavItem>
         </Nav>
         <HamburgerMenu onClick={handleMenuClick}>
@@ -64,7 +51,7 @@ const NavbarContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  background-color: rgba(167, 191, 253, 0.8);
+  background-color: #fff;
  
   @media screen and (max-width: 768px) {
   flex-direction: column;
@@ -77,7 +64,7 @@ const Logo = styled.a`
   font-size: 32px;
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
+  color: #3A2A00;
   text-decoration: none;
   transition: all 1s;
   img {
@@ -114,8 +101,11 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled.a`
+  font-family: Post No Bills Colombo ExtraBold;
+  font-size: 13px;
+  font-weight: bold;
   transition: all 1s;
-  color: #fff;
+  color: #3A2A00;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
@@ -127,8 +117,8 @@ const NavLink = styled.a`
     height: 31px;
     left: 685px;
     top: 4px;
-    background: #FFFFFF;
-    border-radius: 3.76471px;
+    background: rgba(255, 199, 66, 1);
+    border-radius: 3px;
     border-style: none;
     transition: all 1s;
     &:hover{
@@ -146,47 +136,10 @@ const NavLink = styled.a`
     text-decoration: none;
   }
 `;
-
-
-const DropDownContent = styled.div`
-  display: none;
-  position: absolute;
-  z-index: 1;
-  background-color: rgba(167, 191, 253, 0.8);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-`;
-
-
-const DropDownItem = styled.a`
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-  
-  &:hover {
-    background-color: #fff;
-    color: rgba(167, 191, 253, 0.8);
-  }
-  `;
-
-  const DropDown = styled.div`
-    position: relative;
-    display: inline-block;
-  `;
-  
-  const DropDownBtn = styled.a`
-  transition: all 1s;
-  color: #fff;
-  text-decoration: none;
-  /* padding: 10px; */
-  cursor: pointer;
-`;
-
-
 const HamburgerMenu = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: black;
   justify-content: space-around;
   width: 25px;
   height: 25px;

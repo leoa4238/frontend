@@ -32,6 +32,6 @@ function App() {
 export default App;
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #A7BFFD;
+    background-color: #FFFF;
   }
 `;

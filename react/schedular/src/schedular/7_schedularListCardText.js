@@ -1,14 +1,14 @@
 import styled from "styled-components"
 
-const SchedularListCardText = (props) =>{
+const SchedularListCardText = (props) => {
 
-return(
-  <CardTextWrap>
-    <h4>{props.title}</h4>
-    <p>{props.sTime} - {props.eTime}</p>
-    <p>{props.detail}</p>
-  </CardTextWrap>
-);
+  return (
+    <CardTextWrap>
+      <h4>{props.title}</h4>
+      <p>{props.sTime} - {props.eTime}</p>
+      <p>{props.detail}</p>
+    </CardTextWrap>
+  );
 
 }
 
