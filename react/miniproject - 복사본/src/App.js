@@ -1,12 +1,12 @@
 import React from 'react';
-import Counter from './components/Counter';
+import Say from './components/Say';
 
 
 
 
 function App() {
   return (
-      <Counter></Counter>
+      <Say/>
   );
 }
 
