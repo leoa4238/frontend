@@ -1,17 +1,16 @@
-import { InputBox, InputLable, InputWrap, PageTitle } from "../../../styles/emotion";
+import { InputBox, InputLabel, InputWrap, PageTitle } from "../../../styles/emotion";
 
-
-const EmotionPage = () =>{
+const EmotionPage = ()=>{
     return(
-      <>
-      <PageTitle>이모션 페이지입니다</PageTitle>
-      <InputWrap>
-        <InputLable>이름</InputLable>
-        <InputBox/>
-      </InputWrap>
-      </>
+        <>
+            <PageTitle>이모션 페이지 입니다</PageTitle>
+            <InputWrap>
+                <InputLabel>이름</InputLabel>
+                <InputBox/>
+            </InputWrap>
+        </>
     );
 }
 
-export default EmotionPage
+export default EmotionPage;
 
