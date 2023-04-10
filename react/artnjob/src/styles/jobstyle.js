@@ -73,8 +73,8 @@ height: 50px;
 align-items:center
 `
 
-export const SearchingBar =  styled.input`
-width:100%
+export const SearchingBar = styled.input`
+width:100%;
 border: 1px none black;
     padding-right: 132px;
 `
@@ -137,7 +137,7 @@ justify-content: center
 
 
 export const CardCategory = styled.span`
-justify-content:center
+justify-content:center;
 width: 34px;
 height: 21px;
 background: rgba(255, 255, 255, 0.37);
@@ -150,8 +150,6 @@ font-size: 11px;
 line-height: 13px;
 text-align: center;
 color: #587A20;
-
-
 `
 
 
@@ -173,4 +171,11 @@ export const ImgFile = styled.div`
 background-image: url(/backgroundimg.png);
 width: 100%;
 height: 50%;
+`
+
+export const wholeText = styled.div`
+
+`
+export const CardWrapper = styled.div`
+ 
 `
