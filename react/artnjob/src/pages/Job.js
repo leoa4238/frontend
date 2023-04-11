@@ -18,14 +18,22 @@ const Job=(props)=> {
   const toggleView = (view) => {
     setViews({ ...views, [view]: !views[view] });
   };
+
+  const categoryContents = ['전체', '음악', '디자인 미술', '체육 무용', '기타'];
+  const [selectedCategory, setSelectedCategory] = useState('전체');
+
+  const onCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+  
   return (
     <CategoryWrapper>
       <CategoryContents>
-        <CategoryContentsElement>전체</CategoryContentsElement>
-        <CategoryContentsElement>음악</CategoryContentsElement>
-        <CategoryContentsElement>디자인 미술</CategoryContentsElement>
-        <CategoryContentsElement>체육 무용</CategoryContentsElement>
-        <CategoryContentsElement>기타</CategoryContentsElement>
+        {categoryContents.map((category) => (
+          <CategoryContentsElement key={category} 
+          onClick={() => onCategoryClick(category)} 
+          style={{background: category === selectedCategory ? 'linear-gradient(90deg, #FFC642 0%, rgba(255, 238, 199, 0.0260417) 251.08%)' : 'transparent'}}>{category}</CategoryContentsElement>
+        ))}
       </CategoryContents>
       <SemiWrapper>
       <SemiCategoryWrapper>
@@ -61,7 +69,7 @@ const Job=(props)=> {
             <CardCategory>영상</CardCategory>
             <CardCategory>미술</CardCategory>
             <CardCategory>음악</CardCategory>
-            <CardCategory>디자인</CardCategory>
+            <CardCategory>체육</CardCategory>
             <CardCategory>무용</CardCategory>
           </CardCategoryWrapper>
           <DataShare>

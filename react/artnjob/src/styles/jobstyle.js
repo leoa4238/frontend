@@ -23,12 +23,11 @@ font-weight: 600;
 font-size: 18px;
 line-height: 150%;
 border-radius: 24px;
-&:hover{
+ width: 281px;
+  text-align: center;
   background: linear-gradient(90deg, #FFC642 0%, rgba(255, 238, 199, 0.0260417) 251.08%);
   transition: 3s;
-  width: 281px;
-  text-align: center;
-}
+
 `
 export const SemiWrapper = styled.div`
 width: 100%;
@@ -179,3 +178,16 @@ export const wholeText = styled.div`
 export const CardWrapper = styled.div`
  
 `
+
+export const CategoryContentsElements = styled.div`
+  background: linear-gradient(90deg, #FFC642 0%, rgba(255, 238, 199, 0.0260417) 251.08%);
+  transition: 3s;
+  width: 281px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  &.selected {
+    background-color: blue;
+  }
+`;
