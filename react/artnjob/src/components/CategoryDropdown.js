@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
 const CategoryDropdown = ({ categories, onSelect }) => {
@@ -17,9 +17,10 @@ const CategoryDropdown = ({ categories, onSelect }) => {
   };
 
   return (
+    
     <DropdownWrapper>
       <DropdownButton onClick={handleDropdownClick}>
-        {selectedCategory ? selectedCategory.name : 'Select a category'}
+        {selectedCategory ? selectedCategory.name : '카테고리'}
       </DropdownButton>
       {isOpen && (
         <DropdownList>
@@ -37,15 +38,7 @@ const CategoryDropdown = ({ categories, onSelect }) => {
   );
 };
 
-CategoryDropdown.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onSelect: PropTypes.func.isRequired,
-};
+
 
 const DropdownWrapper = styled.div`
   position: relative;

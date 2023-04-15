@@ -4,17 +4,19 @@ import Dropdown from '../components/Dropdown ';
 import TriangleIcon from '../styles/TriangleIcon';
 import { CategoryWrapper, CategoryContents, CategoryContentsElement, SearchingBar, SearchingBarWrap, SemiCategoryWrapper, RegisterWrap, RegisterButton, RegisterWrapper, RegiststerDiv, CardWrap, CardCategory, DataShare, ImgFile, InfoUser, CardCategoryWrapper, CardWrapper } from '../styles/jobstyle'
 import { SemiWrapper, SemiCategory, } from '../styles/jobstyle'
+import { useNavigate } from 'react-router-dom';
 
 
 
-
-const Job=(props)=> {
-  const [views, setViews] = useState({
+const Job = () => {
+  const navigate = useNavigate();
+  const [views, setViews] = useState(
+    {
     view1: false,
     view2: false,
     view3: false
   });
-  
+
   const toggleView = (view) => {
     setViews({ ...views, [view]: !views[view] });
   };
@@ -58,7 +60,9 @@ const Job=(props)=> {
         <div>전체 100건</div>
         <RegisterWrapper>
           < RegiststerDiv>최근 등록순</RegiststerDiv>
-          <RegisterButton>글쓰기</RegisterButton >
+          <RegisterButton onClick={()=>{navigate('/form')}}>
+            글쓰기
+          </RegisterButton >
         </RegisterWrapper>
       </RegisterWrap>
       <CardWrapper>
