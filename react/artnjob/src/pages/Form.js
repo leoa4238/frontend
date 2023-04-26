@@ -1,13 +1,14 @@
 import React from 'react'
-import { FormTitle, FormWrap, FormWrapper, HeaderImgWrap,WriteFormWrapper, ImgTag, ImgTagIcon, InputTitleWrapper,flexWrapper ,InputFormWrapper, ImgTagIconButton, InputTag, Sunghyunwrapper, BussinessWrap, IntroService, InputSpan, InputSpanWrap, ArtnJobWrapper, ArtnJobWrapperInputButton, ArtnJobWrapperInputWrap, ArtnJobWrapperInput, ArtnJobWrapperInputWrapper, CalenderWrap, RegisterButton, RegisterButtonWrap} from '../styles/formSrtyle';
+import { FormTitle, FormWrap, FormWrapper, HeaderImgWrap,WriteFormWrapper, ImgTag, ImgTagIcon, InputTitleWrapper,InputFormWrapper, ImgTagIconButton, InputTag, Sunghyunwrapper, BussinessWrap, IntroService, InputSpan, InputSpanWrap, ArtnJobWrapper, ArtnJobWrapperInputButton, ArtnJobWrapperInputWrap, ArtnJobWrapperInput, ArtnJobWrapperInputWrapper, CalenderWrap, RegisterButton, RegisterButtonWrap, ButtonAdd} from '../styles/formSrtyle';
 import Rectangle from '../assets/images/icon3.png'
 import infoIcon from '../assets/images/icon4.png'
+
 
 const Form = () => {
   return (
     <WriteFormWrapper>
       <HeaderImgWrap>
-        <button>
+        <ButtonAdd>
           <span>
             <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.9 3.12817H16.8116L16.0672 0.985431C15.967 0.697696 15.7799 0.448244 15.5316 0.271669C15.2833 0.0950944 14.9863 0.000148953 14.6816 3.00626e-08H7.29865C6.99237 -6.19733e-05 6.69376 0.0957876 6.44473 0.274095C6.19571 0.452402 6.00877 0.704214 5.91016 0.994185L5.18383 3.12817H1.10002C0.808374 3.1285 0.528771 3.2445 0.322549 3.45072C0.116327 3.65694 0.000327545 3.93655 0 4.22819V18.5284C0.000327545 18.82 0.116327 19.0996 0.322549 19.3059C0.528771 19.5121 0.808374 19.6281 1.10002 19.6284H20.9C21.1916 19.6281 21.4712 19.5121 21.6775 19.3059C21.8837 19.0996 21.9997 18.82 22 18.5284V4.22819C21.9997 3.93655 21.8837 3.65694 21.6775 3.45072C21.4712 3.2445 21.1916 3.1285 20.9 3.12817ZM20.5333 18.1617H1.46701V4.59486H6.2342L7.29865 1.46669H14.6816L15.7684 4.59486H20.5333V18.1617Z" fill="white" />
@@ -15,7 +16,7 @@ const Form = () => {
             </svg>
           </span>
           사진추가
-        </button>
+        </ButtonAdd>
       </HeaderImgWrap>
         <FormWrap>
         <aside></aside>
@@ -158,11 +159,7 @@ const Form = () => {
           <ImgTag src={Rectangle}></ImgTag>
             <div>주요업무</div>
           </InputTitleWrapper>
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          <IntroService></IntroService>
         </div>
         <div>
         <InputTitleWrapper>

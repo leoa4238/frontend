@@ -1,5 +1,7 @@
 
 import styled from "styled-components";
+import whiteSpace from '../assets/images/startupBackground.png'
+
 
 export const WriteFormWrapper = styled.div`
 width: 1252px;
@@ -11,10 +13,27 @@ display: flex;
 flex-direction:row;
 
 `
+export const ButtonAdd = styled.button`
+background: #EE6E03;
+border: 4px solid #FFFFFF;
+box-shadow: -6px 0px 12px rgba(0, 0, 0, 0.31);
+border-radius: 6px;
+width: 144px;
+height: 41px;
+display: flex;
+align-items: center;
+margin-left: 42px;
+margin-bottom: 17px;
+justify-content: center;
+`
 
 export const HeaderImgWrap = styled.div`
   width: 100%;
   border: 1px solid black;
+  height: 489px;
+  background-image: url(${whiteSpace});
+  display: flex;
+  align-items: flex-end;
 `
 export const FormWrapper = styled.div`
 width: 732px;
@@ -30,7 +49,7 @@ font-size: 24px;
 font-weight:600;
 font-family:'Inter';
 margin-bottom:42px;
-` 
+`
 
 export const FormWrap = styled.div`
 width: 100%;

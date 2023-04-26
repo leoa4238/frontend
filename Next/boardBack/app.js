@@ -4,9 +4,9 @@
 import express from "express";
 import morgan from "morgan";
 import router from "./routers/boards.js";
-import mysql from 'mysql2/promise.js';
-import { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_PORT, DB_USER } from "./env.js";
-
+import pool, { getConnection } from "./db.js";
+//cors
+import cors from "cors";
 
 // CommonJS 방식
 // const express = require("express");
@@ -20,6 +20,7 @@ app.set("port", 3001); // 서버 프로그램의 포트번호 설정하기
 // 3001번 포트에서 발생하는 요청은 모두 app.js 로 전달이 된다!
 app.listen(app.get("port"), () => console.log(`${app.get("port")}번 포트에서 실행중 입니다!`));
 
+app.use(cors());
 // 미들웨어
 // 요청과 응답 사이를 거쳐서 실행되는 함수들 
 // boards get요청! --> 미들웨어 ,,,,,--> 게시글 목록 데이터 응답!
@@ -42,20 +43,67 @@ app.use(express.json()); // 데이터 형식으로 json
 // 적용 설정값 
 // extended : true --> {a : '배상엽'}
 // extended : flase --> [Object: null prototype] {a : '배상엽'} 
-app.use(express.urlencoded( {extended:false}));
+app.use(express.urlencoded({ extended: false }));
 
 app.use('/boards', router);
 
-// db 연결을 위한 connection pool 만들기
-const pool = mysql.createPool({
-    host:DB_HOST,
-    user:DB_USER,
-    password:DB_PASSWORD,
-    database:DB_DATABASE,
-    waitForConnections:true,
-    port:DB_PORT
+
+
+
+
+//Localhost:3001/test get 요청하게 된다면
+
+//Localhost:3001/test get 요청하게 된다면
+// res.status(상태코드)
+//res.send : 응답으로 문자열의 결과를 볼때 쓰는 것이다.(content타입을 알아서 판단)
+//res.json() : 응답으로 json 형식으로 바꾸어 보내줌 -> 객체로 알아서 바꿔줌 content-type : application/JSON으로 고정
+//res.render() :응답으로 html 코드형식을 제공
+//res.end() : 응답으로 보낼 데이터가 없을 때 응답 종료
+
+
+
+app.get('/test', async (req, res) => {
+    let testResponse = {
+        message: '사용자 목록 가져오기 성공!'
+
+    };
+    try {
+
+        let connection = await getConnection()
+        let [rows, field] = await connection.query('select * from tbl_users');
+        connection.release();
+        testResponse.data = rows
+        res.status(200).json(testResponse); //객체에서 status를 201로 설정하고 응답완료보내줘!
+    } catch (err) {
+        console.log('서버 내부 오류 발생!', err)
+        res.status(500).end(); //서버 내부적인 오류
+    }
 });
 
+
+//동적 쿼리 작성
+app.get('/users/:uId', async (req, res) => {
+    console.log('users/:uId get 요청 발생!');
+    console.log(req.params);
+    let usersRes = {
+        message: '유저 정상적으로 받아옴!'
+    };
+
+    try {
+
+        let connection = await pool.getConnection()
+        let query = `select * from tbl_users where uId = ${req.params.uId}`
+        let [rows, field] = await connection.query(query);
+        if (rows.length == 0) {
+            usersRes.message = '유저 조회 실패'
+        }
+        usersRes.data = rows;
+        res.status(200).json(usersRes);
+    } catch (err) {
+        console.log('서버자체 오류 발생', err);
+        res.status(500).end();
+    }
+});
 
 
 // get 요청 받아보기
@@ -74,3 +122,85 @@ const pool = mysql.createPool({
 //   res.send({ name: "배상엽", age: 10 });
 // });
 
+app.get('/tmp/users', async (req, res) => {
+    try {
+        let sql = 'select * from tbl_users where uName=? or uName=?;'
+        let conn = await getConnection();
+        let [rows, field] = await conn.query(sql, ['이정도', '홍길동']);
+        conn.release();
+        res.status(200).json(rows);
+
+    } catch (error) {
+        res.status(500).end();
+    }
+});
+
+// 다중쿼리 테스트
+app.get('/tmp/:uId', async (req, res) => {
+
+    try {
+        let sql = 'select * from tbl_users where uId = ?;'
+        let conn = await getConnection();
+        let [rows, fiedl] = await conn.query(sql, req.params.uId);
+
+        conn.release();
+        res.status(200).json(rows);
+    } catch (err) {
+        console.log(err);
+        res.status(500).end();
+    }
+});
+
+
+
+app.post('/tmp/users', async (req, res) => {
+    try {
+        let insertValue = [
+            '김팬텀',
+            'yyy1120',
+            'azjh1120@gmail.com',
+            '010-2222-2222',
+            'https://www.naver.com',
+            null,
+            '서울특별시',
+            '수성구',
+            '신매동 145',
+            '08832',
+            '20230412',
+            '20230412'
+        ];
+        let conn = await getConnection()
+        let sql = `
+        insert into tbl_users 
+        (uName, userName, email, uPhone, uWebsite, uProvince, uCity, uDistrict, uStreet, uZipcode, createdAt, updatedAt)
+        values 
+        (?);
+        `;
+
+        let [rows, fields] = await conn.query(sql, [insertValue])
+        conn.release();
+        res.status(201).json(rows);
+    } catch (err) {
+        console.log(err);
+        res.status(500).end();
+    }
+
+})
+
+//insert 같은 경우에는 여러개의 인자를 객체로 전달
+app.post('/tmp/boards', async (req, res) => {
+    try {
+        // let insertValue = [req.body.pTitle, req.body.pContent, req.body.userId];
+        let sql = `insert into tbl_posts
+        set ?;`;
+
+        let conn = await getConnection();
+        let [rows, field] = await conn.query(sql,req.body);
+        conn.release();
+        res.status(201).json(rows);
+    } catch (err) {
+        console.log(err)
+        res.status(500).end();
+    }
+
+})

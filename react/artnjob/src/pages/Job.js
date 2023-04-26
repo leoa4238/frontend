@@ -12,10 +12,10 @@ const Job = () => {
   const navigate = useNavigate();
   const [views, setViews] = useState(
     {
-    view1: false,
-    view2: false,
-    view3: false
-  });
+      view1: false,
+      view2: false,
+      view3: false,  
+});
 
   const toggleView = (view) => {
     setViews({ ...views, [view]: !views[view] });
@@ -23,25 +23,24 @@ const Job = () => {
 
   const categoryContents = ['전체', '음악', '디자인 미술', '체육 무용', '기타'];
   const [selectedCategory, setSelectedCategory] = useState('전체');
-
   const onCategoryClick = (category) => {
     setSelectedCategory(category);
   };
-  
+
   return (
     <CategoryWrapper>
       <CategoryContents>
         {categoryContents.map((category) => (
-          <CategoryContentsElement key={category} 
-          onClick={() => onCategoryClick(category)} 
-          style={{background: category === selectedCategory ? 'linear-gradient(90deg, #FFC642 0%, rgba(255, 238, 199, 0.0260417) 251.08%)' : 'transparent'}}>{category}</CategoryContentsElement>
+          <CategoryContentsElement key={category}
+            onClick={() => onCategoryClick(category)}
+            style={{ background: category === selectedCategory ? 'linear-gradient(90deg, #FFC642 0%, rgba(255, 238, 199, 0.0260417) 251.08%)' : 'transparent' }}>{category}</CategoryContentsElement>
         ))}
       </CategoryContents>
       <SemiWrapper>
-      <SemiCategoryWrapper>
+        <SemiCategoryWrapper>
           <SemiCategory onClick={() => toggleView('view1')}>
             카테고리 <TriangleIcon />
-            {views.view1 && <Dropdown />}
+            {views.view1 && <Dropdown selectedCategory={selectedCategory} />}
           </SemiCategory>
           <SemiCategory onClick={() => toggleView('view2')}>
             경력 <TriangleIcon />
@@ -59,8 +58,8 @@ const Job = () => {
       <RegisterWrap>
         <div>전체 100건</div>
         <RegisterWrapper>
-          < RegiststerDiv>최근 등록순</RegiststerDiv>
-          <RegisterButton onClick={()=>{navigate('/form')}}>
+          <RegiststerDiv>최근 등록순</RegiststerDiv>
+          <RegisterButton onClick={() => { navigate('/form') }}>
             글쓰기
           </RegisterButton >
         </RegisterWrapper>
@@ -91,4 +90,4 @@ const Job = () => {
 }
 
 
-export default Job
+export default Job;

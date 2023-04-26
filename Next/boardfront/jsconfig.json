@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/boardList" : ["./src/components/units/boards/list/*"]
+    }
+  }
+}
