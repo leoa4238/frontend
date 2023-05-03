@@ -63,52 +63,108 @@
 // fetch() 함수는 인자로 API 경로를 해석한다
 //그리고 기본적으로 get방식으로 해석한다
 
-let a = fetch('https://koreanjson.com/users');
-console.log(a);
+// let a = fetch('https://koreanjson.com/users');
+// console.log(a);
 
-a.then((pram)=>{return pram.json()}).then((param)=>{console.log(param)
-// 모든 유저에 대한 정보는 param에 들어있으니까 
-//이를 사용하여 알맞게 뿌려주기
-//promise타입이면 then을 이어서 쓸 수 있다
-  for(let i = 0; i<param.length; i++){
-    console.log(param[i].name);
-  }
-});
+// a.then((pram)=>{return pram.json()}).then((param)=>{console.log(param)
+// // 모든 유저에 대한 정보는 param에 들어있으니까 
+// //이를 사용하여 알맞게 뿌려주기
+// //promise타입이면 then을 이어서 쓸 수 있다
+//   for(let i = 0; i<param.length; i++){
+//     console.log(param[i].name);
+//   }
+// });
 
-//get방식을 통해 3번 아이디를 가진 user의id 정보 출력하기
-fetch('https://koreanjson.com/users/3')
-.then((resp)=>{return resp.json()})
-.then((user)=>{console.log(user)})
-.catch((err)=>{console.log(err)});
+// //get방식을 통해 3번 아이디를 가진 user의id 정보 출력하기
+// fetch('https://koreanjson.com/users/3')
+// .then((resp)=>{return resp.json()})
+// .then((user)=>{console.log(user)})
+// .catch((err)=>{console.log(err)});
 
-//가상유저
-let newUser = 
-  {
-    "id": 11,
-    "name": "이강인",
-    "username": "kanginlee",
-    "email": "kanginlee@hanmail.net",
-    "phone": "010-9311-9411",
-    "website": "https://twitter.com/@kanginlee",
-    "province": "전라북도",
-    "city": "전주시",
-    "district": "완산구",
-    "street": "풍남동3가 64-1",
-    "zipcode": "55041",
-    "createdAt": "2019-02-24T16:17:47.000Z",
-    "updatedAt": "2019-02-24T16:17:47.000Z"
-}
+// //가상유저
+// let newUser = 
+//   {
+//     "id": 11,
+//     "name": "이강인",
+//     "username": "kanginlee",
+//     "email": "kanginlee@hanmail.net",
+//     "phone": "010-9311-9411",
+//     "website": "https://twitter.com/@kanginlee",
+//     "province": "전라북도",
+//     "city": "전주시",
+//     "district": "완산구",
+//     "street": "풍남동3가 64-1",
+//     "zipcode": "55041",
+//     "createdAt": "2019-02-24T16:17:47.000Z",
+//     "updatedAt": "2019-02-24T16:17:47.000Z"
+// }
 
-fetch('https://koreanjson.com/users',{
-  method:'post',
-  body:JSON.stringify(newUser),
-  headers:{
-    'Content-Type': 'application/json' 
-  }
-}).then(resp => console.log(resp.json())).then(newUser =>{
-  console.log('우리가 추가한 user:', newUser);
+// fetch('https://koreanjson.com/users',{
+//   method:'post',
+//   body:JSON.stringify(newUser),
+//   headers:{
+//     'Content-Type': 'application/json' 
+//   }
+// }).then(resp => console.log(resp.json())).then(newUser =>{
+//   console.log('우리가 추가한 user:', newUser);
+// })
+
+// ===========================================================================
+
+let postList = [
+  {page:1},
+  {page:10},
+  {page:16},
+  {page:17},
+  {page:5},
+  {page:78},
+  {page:46},
+]
+
+//첫번째 -1 두번째 1 자리가 바뀌고 세번째 1 자리가 바뀌고 네번째 -1
+//첫번째 반복은 두번째 요소와 그 이전 요소들 크기 비교 1, 10 --> -1
+//두번째 세번째 반복 :  3번째 요소와 그 이전 요소들 (2번 1번)요소 크기 비교
+// 16 1 ---> 1 16 10 --> 1
+//17하고 그 이전 요소들(16, 1, 10) 검사
+
+console.log('정렬 전  postlist : ', postList)
+postList.sort((a,b)=>{
+  console.log('sort 안의 함수, a:',a,'b:',b)
+  //a 뒤요소 b> 앞요소 --> 뒤쪽요소.page는 큰 값들이 들어있다 요소.page 오름차순 정렬
+  // if(a.page > b.page) return 1;
+  // if(a.page < b.page) return -1;
+  // return 0;
+
+  return a.page - b.page;
+
+
+})
+console.log('정렬 후  postlist : ', postList)
+console.log([1, 6, 8, 2].sort())
+
+
+let nameList = [
+  'apple',
+  'abcdefff',
+  'a',
+  'afeghgwetggwe',
+
+]
+
+nameList.sort((a,b)=>{return a.length - b.length})
+console.log(nameList);
+
+postList = [
+{createdAt: '2023-04-01'},
+{createdAt: '2023-03-01'},
+{createdAt: '2023-07-01'},
+{createdAt: '2023-04-15'},
+]
+
+postList.sort((a,b)=>{
+ return new Date(a.createdAt) - new Date(b.createdAt)
 })
 
+console.log(postList)
 
-
-
+console.log(new Date('2023-04-01') - new Date('2023-05-01'))

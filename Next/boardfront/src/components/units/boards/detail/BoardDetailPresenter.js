@@ -7,7 +7,7 @@ const BoardDetailUI = (props)=>{
   return(
     <Layout>
     <BoardDetailWrap>
-      <BoardTitle>게시글의 제목입니다</BoardTitle>
+      <BoardTitle>{props.post?.pTitle}</BoardTitle>
       <BoardInfoWrap>
         <p>작성자id</p>
         <p>{props.post?.userId}</p>
@@ -23,7 +23,7 @@ const BoardDetailUI = (props)=>{
       <BoardContent>
       {props.post?.pContent}
       </BoardContent>
-      <WriteBtn>수정하기</WriteBtn>
+      <WriteBtn onClick={props.onMoveToUpdate}>수정하기</WriteBtn>
     </BoardDetailWrap>
     </Layout>
   )

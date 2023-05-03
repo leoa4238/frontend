@@ -17,12 +17,23 @@ const BoardDetail = () =>{
 
   console.log(router.query.boardId)
   useEffect(()=>{
+    if(!router.isReady){
+      return;
+    }
     FETCH_BOARD(router.query.boardId)
     .then((res)=>{setPost(res.data.fetch_board)})//setPost로 state변수가 변함
     .catch((err)=>{console.log(err)})  
-  },[])
+  },[router.isReady]);
+
+  const onMoveToUpdate = () => {
+    router.push(`http://localhost:3000/boards/${router.query.boardId}/update`);
+  }
+
   return(
-  <BoardDetailUI post = {post}/>
+  <BoardDetailUI 
+  post = {post}
+  onMoveToUpdate ={onMoveToUpdate}
+  />
   )
 
 }

@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
     }
     });
 
-    //Localhost :3001/boards
+    //post요청 Localhost :3001/boards    
     router.post('/', async(req,res)=>{
         try{
             console.log('바디 안에는 무엇이?', req.body);
@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
             let a = await conn.query(sql);
             //insert 쿼리 실행 결과로는 insert된 행에 대한 여러 정보들이 들어 있다.
             conn.release();
-            res.json({message:'새롭게 추가성공!', data:a});
+            res.json({message:'새롭게 추가성공!', newId:a[0].insertId});
 
         }catch(err){
             console.log(err)
@@ -57,15 +57,14 @@ router.put('/:boardsNum',async(req,res)=>{
     try{
         let sql = `
         update tbl_posts
-        set pTitle = '${req.body.title}', userId=${req.body.userId}, pContent = '${req.body.content}', updatedAt =now()
+        set pTitle = '${req.body.title}',  pContent = '${req.body.content}', updatedAt =now()
         where pId = ${req.params.boardsNum};
         `;
 
         let conn = await getConnection();
         let a = await conn.query(sql);
         conn.release();
-        res.json({message:`${req.params.boardsNum}수정완료`});
-
+        res.json({message:`${req.params.boardsNum}수정완료`, target: `${req.params.boardsNum}`});
     }catch{
         res.status(500).end();
     }

@@ -17,6 +17,7 @@ export const Line = styled.div`
 
 export const BoardHeader = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid black;
@@ -39,6 +40,7 @@ export const BoardSearch = styled.input`
 `;
 
 export const SearchBtn = styled.button`
+  flex-shrink: 0;
   border: none;
   border-radius: 0;
   cursor: pointer;

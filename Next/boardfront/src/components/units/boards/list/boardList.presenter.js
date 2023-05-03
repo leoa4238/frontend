@@ -1,7 +1,13 @@
 import Layout from "@/components/common/layout";
 import { BoardHeader, BoardListWrap, BoardSearch, BoardTableHeader, BoardTableRow, Line, SearchBtn, SearchWrap, WriteBtn } from "@/styles/boards/boardList.style";
+import { FormControl, InputLabel, MenuItem, Pagination, Select } from "@mui/material";
+import PaginatedList from "./boardList";
+import { useState } from "react";
 
 const BoardListUI = (props) =>{
+  
+
+
   return(
     <Layout>
     <BoardListWrap>
@@ -10,8 +16,17 @@ const BoardListUI = (props) =>{
       <BoardHeader>
         <p>게시글</p>
         <SearchWrap>
-          <BoardSearch/>
-          <SearchBtn>검색</SearchBtn>
+          <BoardSearch onKeyDown={props.onEnterDown} ref={props.searchInput}/>
+          <SearchBtn  onClick={props.onSearchClick}>검색</SearchBtn>
+          <FormControl variant="standard" fullWidth sx={{ m: 2, minWidth: 140 }}>
+            <InputLabel>정렬방식</InputLabel>
+        <Select value={props.selectValue} onChange={props.onSelectChange}>
+
+          <MenuItem value={1}>최신순</MenuItem>
+          <MenuItem value={2}>수정일순</MenuItem>
+          <MenuItem value={3}>오래된순</MenuItem>
+          </Select>
+          </FormControl>
         </SearchWrap>
       </BoardHeader>
       <BoardTableHeader>
@@ -22,18 +37,14 @@ const BoardListUI = (props) =>{
         <p>수정일자</p>
       </BoardTableHeader>
       
-        {
-        props.postsList.map(
-          (v,idx)=> <BoardTableRow key={v.pId}>
-            <p>{idx+1}</p>
-            <p onClick={()=> {props.onTitleClick(v.pId)}}>{v.pTitle}</p>
-            <p>{v.userId}</p>
-            <p>{v.createdAt.substr(0,10)}</p>
-            <p>{v.updatedAt.substr(0,10)}</p>
-          </BoardTableRow>
-          )
-          }
+      <PaginatedList 
+      postsList={props.postsList} 
+      currentPage={props.currentPage} 
+      onTitleClick={props.onTitleClick}
+      searchText={props.searchText}
+      />
       <WriteBtn onClick={props.onWriteBtnClick}>글쓰기</WriteBtn>
+      <Pagination count={props.totalPage} page={props.currentPage} onChange={props.onPageClick} />
     </BoardListWrap>
     </Layout>
   )
