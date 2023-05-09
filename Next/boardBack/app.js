@@ -7,6 +7,7 @@ import router from "./routers/boards.js";
 import pool, { getConnection } from "./db.js";
 //cors
 import cors from "cors";
+import comments from "./routers/comments.js";
 
 // CommonJS 방식
 // const express = require("express");
@@ -46,6 +47,7 @@ app.use(express.json()); // 데이터 형식으로 json
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/boards', router);
+app.use('/comments', comments);
 
 
 

@@ -1,6 +1,7 @@
 import Layout from "@/components/common/layout";
 import { BoardContent, BoardDetailWrap, BoardInfoWrap, BoardTitle } from "@/styles/boards/boardDetail.styles";
 import { WriteBtn } from "@/styles/boards/boardList.style";
+import { Comment, CommentBtn, CommentDate, CommentHeader, CommentInput, CommentInputWrap, CommentItem, CommentListWrap, CommentWriteBtn, CommentWriter } from "@/styles/comments/comments.styles";
 
 
 const BoardDetailUI = (props)=>{
@@ -24,6 +25,27 @@ const BoardDetailUI = (props)=>{
       {props.post?.pContent}
       </BoardContent>
       <WriteBtn onClick={props.onMoveToUpdate}>수정하기</WriteBtn>
+      <CommentInputWrap>
+        <CommentInput ref={props.commentContentInputRef}/>
+        <CommentWriteBtn onClick={props.onCommentBtnClick}>댓글 달기</CommentWriteBtn>
+      </CommentInputWrap>
+      <CommentListWrap>
+        {
+          props.comments.map((comment)=>
+            <CommentItem key={comment.id}>
+            <CommentHeader>
+              <CommentWriter>작성자 id : {comment.userId}</CommentWriter>
+              <CommentDate>(작성일){comment.createdAt}</CommentDate>
+              <CommentDate>(수정일){comment.updatedAt}</CommentDate>
+              <CommentBtn onClick={()=>props.onCommentDelete(comment.id)}>삭제</CommentBtn>
+              <CommentBtn>수정</CommentBtn>
+            </CommentHeader>
+            <Comment>{comment.content}</Comment>
+          </CommentItem>
+          )
+        }
+      
+      </CommentListWrap>
     </BoardDetailWrap>
     </Layout>
   )

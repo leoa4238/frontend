@@ -1,7 +1,7 @@
-import { FETCH_BOARD } from "@/api/board/board.api"
+import { DELETE_COMMENT, FETCH_BOARD, FETCH_COMMENTS_BY_POSTID, POST_COMMENT } from "@/api/board/board.api"
 import BoardDetailUI from "./BoardDetailPresenter"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 
@@ -13,6 +13,8 @@ const BoardDetail = () =>{
   //데이터를 다 받아오면 setPost()가 실행되어 post 속에 값이 변하게 되고
   //다시 렌더링이 된다
   const [post,setPost] = useState(null);
+  const [comments, setComments] = useState([]);
+  const commentContentInputRef = useRef(null);
   //state로 변수를 만듬, null값 초기값
 
   console.log(router.query.boardId)
@@ -22,19 +24,58 @@ const BoardDetail = () =>{
     }
     FETCH_BOARD(router.query.boardId)
     .then((res)=>{setPost(res.data.fetch_board)})//setPost로 state변수가 변함
-    .catch((err)=>{console.log(err)})  
+    .catch((err)=>{console.log(err)}) 
+    
+    FETCH_COMMENTS_BY_POSTID(router.query.boardId)
+    .then((res)=> setComments(res.data))
+    .catch((err)=> console.log(err))
   },[router.isReady]);
+
+  
 
   const onMoveToUpdate = () => {
     router.push(`http://localhost:3000/boards/${router.query.boardId}/update`);
+  }
+
+  const onCommentBtnClick = () =>{
+    const content = commentContentInputRef.current.value;
+
+    if(!content){
+      alert('댓글 내용은 필수적으로 입력해주세요!')
+      return;
+    }
+    POST_COMMENT({content:content, postId: router.query.boardId, userId:3})
+    .then((res)=>{
+      console.log(res); //새롭게 추가한 댓글 객체는 res.data에 있다
+      // router.reload();
+    let copy = JSON.parse(JSON.stringify(comments));
+      copy.push(res.data);
+      setComments(copy);
+      commentContentInputRef.current.value=''
+    })
+    .catch(err=>console.log(err))
+  }
+  //삭제할 댓글의 id를 받아오고, 해당 댓글을 삭제해주는 함수
+  //댓글을 작성한 사람만 삭제할 수 있도록!
+  const onCommentDelete=(commentId)=>{
+    DELETE_COMMENT(commentId)
+    .then((res)=>{
+      let copy = JSON.parse(JSON.stringify(comments));
+     copy = copy.filter((comment)=>comment.id !== commentId);
+     setComments(copy);
+    }).catch(err =>console.log(err));
   }
 
   return(
   <BoardDetailUI 
   post = {post}
   onMoveToUpdate ={onMoveToUpdate}
+  comments={comments}
+  onCommentBtnClick={onCommentBtnClick}
+  commentContentInputRef={commentContentInputRef}
+  onCommentDelete={onCommentDelete}
   />
   )
 
 }
-export default BoardDetail
+export default BoardDetail;

@@ -84,6 +84,7 @@ const BoardList = () => {
       onPageClick={onPageClick}
       searchText ={searchText}
       onSearchClick={onSearchClick}
+      setTotalPage={setTotalPage}
     />
   );
 }

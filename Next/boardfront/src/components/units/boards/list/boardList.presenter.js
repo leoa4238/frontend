@@ -5,7 +5,6 @@ import PaginatedList from "./boardList";
 import { useState } from "react";
 
 const BoardListUI = (props) =>{
-  
 
 
   return(
@@ -42,6 +41,8 @@ const BoardListUI = (props) =>{
       currentPage={props.currentPage} 
       onTitleClick={props.onTitleClick}
       searchText={props.searchText}
+      selectValue={props.selectValue}
+      setTotalPage ={props.setTotalPage}
       />
       <WriteBtn onClick={props.onWriteBtnClick}>글쓰기</WriteBtn>
       <Pagination count={props.totalPage} page={props.currentPage} onChange={props.onPageClick} />
