@@ -5,7 +5,7 @@ const Header = () =>{
   return(
     <MainHeader>
       <MainNav>
-          <Image src={'/logo.svg'} alt="log image" width={200} height={100}/>
+          <Image src={'/LogoLeo.png'} alt="log image" width={120} height={150}/>
         <NavBtnWrap>
           <LoginBtn>로그인</LoginBtn>
           <JoinBtn>회원가입</JoinBtn>
