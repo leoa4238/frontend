@@ -1,5 +1,11 @@
 import styled from "@emotion/styled";
 
+export const BoardDetailBtnWrap = styled.div`
+display: flex;
+column-gap: 10px;
+align-self: flex-end;
+`
+
 export const BoardDetailWrap = styled.div`
   width: 80%;
   display: flex;

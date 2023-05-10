@@ -99,6 +99,29 @@ router.get('/:boardNum', async(req, res) => {
 //     res.send(`요청완료!!`);
 // });
 
+//localhost:3001/boards/11
+router.delete('/:boardId', async(req,res)=>{
+    let conn = null;
+
+    try{
+        conn = await getConnection();
+        await conn.query('delete from tbl_comments where postId=?', req.params.boardId);
+        let[result] = await conn.query('delete from tbl_posts where pId=?', req.params.boardId);
+        console.log(result);
+        if(result.affectedRows === 0){
+            res.status(404).json({message:'게시글 아이디 찾을 수 없음!'});
+            return;
+        }
+        res.status(204).end();    //삭제하면 삭제한 게시글을 응닫으로 주세요
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message:'server 오류 발생'})
+
+    }finally{
+        if(conn !== null) conn.release();
+    }
+});
+
 
 
 export default router;

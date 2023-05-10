@@ -5,35 +5,29 @@ import StudyTextCard from '../components/TextCard'
 import ReplyCard from '../components/ReplyCard'
 import ProfileIcon from '../assets/images/ProfileStateicon.png'
 import {
-  StudyContentTextWrapper,
-  StudyDetailCommentWrap,
+
   StudyDetailCommentWriteWrap,
   StudyDetailCommentWrap2,
-  StudyDetailContentsWrapper,
-  StudyDetailContentsUIWrap,
   StudyDetailPageWrap,
-  StudyDetailTextContentsWrapIcon,
   StudyDetailWrapper,
-  StudyElementsWrapper,
-  StudyParticipateWrapper,
   StudyProfileIcon,
   StudyProfileNameWrap,
   StudyProfileNameWrap2,
   StudyProfileTextWapper,
-  StudyStateWrap,
   StudySubmitButton,
   StudySubmitWrapper,
   StudyTextAreaWrapper,
-  StudyTextContentsWrapper,
   StudyTextContentsWrapper3,
   StudyWriterWrapper,
   TextReplyWrapper,
   CheckboxWrapper,
   ProfileFlexWrapper,
   ReplyButton,
+  StudyReplyIconStyle,
+  ReplyWrapper,
 } from '../styles/StudyDetailPageStyle'
-
-const data = [
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+const data = 
   {
     "category": "영상",
     "content": "string",
@@ -49,12 +43,12 @@ const data = [
     "recruitment": "string",
     "salary": "string",
     "st_dt": "2023-04-16",
-    "title": "스터디 구합니다 선웅님",
+    "title": "스터디 구합니다",
     "wet": "디오넷",
     "work_content": "string",
     "wst": "string",
-  },
-]
+  }
+
 
 const StudyDetailPage = () => {
   const [recruitType, setRecruitType] = useState(true)
@@ -65,13 +59,13 @@ const StudyDetailPage = () => {
   return (
     <StudyDetailPageWrap>
       <StudyDetailWrapper>
-        {data.map(v => (
-          <StudyTextCard 
-            data={v} 
-            recruitType={recruitType} 
+        
+          <StudyTextCard
+            data={data}
+            recruitType={recruitType}
             ProfileIcon={ProfileIcon}
           />
-        ))}
+        
         {comments?.map((el, i) => (
           <StudyDetailCommentWrap2>
             <div>
@@ -86,7 +80,49 @@ const StudyDetailPage = () => {
               </StudyProfileNameWrap2>
               <TextReplyWrapper>{el}</TextReplyWrapper>
               <ReplyButton onClick={() => setReplyBtn(!replyBtn)}>댓글</ReplyButton>
-              {replyBtn && <ReplyCard replyBtn={replyBtn} />}
+              {replyBtn &&
+                <ReplyWrapper>
+                  <StudyTextContentsWrapper3>
+                    <StudyProfileTextWapper>
+                      <StudyReplyIconStyle src={ProfileIcon} />
+                      <StudyProfileNameWrap>
+                        <span>닉네임</span>
+                      </StudyProfileNameWrap>
+                    </StudyProfileTextWapper>
+                    <StudyTextAreaWrapper>
+                      <TextField
+                        onChange={(e) => {
+                          setTextWrite(e.target.value)
+                        }}
+                        id="standard-textarea"
+                        placeholder="댓글을 작성해주세요"
+                        multiline
+                        variant="standard"
+                        style={{ width: "1000px" }}
+                      />
+                    </StudyTextAreaWrapper>
+                    <StudySubmitWrapper>
+                      <CheckboxWrapper>
+                        <Checkbox
+                          {...label}
+                          defaultChecked
+                          sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                        />
+                        <span>비밀댓글</span>
+                      </CheckboxWrapper>
+                      <div>
+
+                      </div>
+                      <StudySubmitButton onClick={() => {
+                        setComments([...comments, textWrite]);
+                        setTextWrite('');
+                      }}>
+                        댓글작성
+                      </StudySubmitButton>
+                    </StudySubmitWrapper>
+                  </StudyTextContentsWrapper3>
+                </ReplyWrapper>
+              }
             </div>
           </StudyDetailCommentWrap2>
         ))}
@@ -101,6 +137,7 @@ const StudyDetailPage = () => {
             <StudyTextAreaWrapper>
               <TextField
                 onChange={(e) => setTextWrite(e.target.value)}
+                value={textWrite}
                 id="standard-textarea"
                 placeholder="댓글을 작성해주세요"
                 multiline

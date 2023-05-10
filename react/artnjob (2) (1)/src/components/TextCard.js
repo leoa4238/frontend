@@ -45,4 +45,4 @@ const StudyTextCard = (props) => {
   )
 }
 
-export default StudyTextCard
+export default StudyTextCard;

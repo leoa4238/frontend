@@ -1,4 +1,4 @@
-import { DELETE_COMMENT, FETCH_BOARD, FETCH_COMMENTS_BY_POSTID, POST_COMMENT } from "@/api/board/board.api"
+import { DELETE_COMMENT, DELETE_POST, FETCH_BOARD, FETCH_COMMENTS_BY_POSTID, POST_COMMENT } from "@/api/board/board.api"
 import BoardDetailUI from "./BoardDetailPresenter"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react";
@@ -66,8 +66,18 @@ const BoardDetail = () =>{
     }).catch(err =>console.log(err));
   }
 
+  const onDeleteClick = () =>{
+    DELETE_POST(router.query.boardId)
+    .then((res)=>{
+      router.replace('/boards');
+    })
+    .catch(err => console.log(err))
+  }
+
   return(
-  <BoardDetailUI 
+  <BoardDetailUI
+  onDeleteClick={onDeleteClick} 
+  setComments ={setComments}
   post = {post}
   onMoveToUpdate ={onMoveToUpdate}
   comments={comments}

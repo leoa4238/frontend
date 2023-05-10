@@ -30,3 +30,13 @@ export const FETCH_COMMENT = async(commentId)=>{
 export const DELETE_COMMENT = async (commentId) =>{
     return await axios.delete(`http://localhost:3001/comments/${commentId}`)
 }
+
+//댓글 id로 해당 댓글을 수정하는 함수
+export const UPDATE_COMMENT = async(commentId, content) =>{
+    return await axios.put(`http://localhost:3001/comments/${commentId}`, {content})
+}
+
+//게시글 id로 해당 게시글 삭제 요청하는 함수
+export const DELETE_POST = async (postId)=>{
+    return await axios.delete(`http://localhost:3001/boards/${postId}`);
+}
