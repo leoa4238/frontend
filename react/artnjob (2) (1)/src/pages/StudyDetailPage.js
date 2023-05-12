@@ -26,6 +26,7 @@ import {
   StudyReplyIconStyle,
   ReplyWrapper,
 } from '../styles/StudyDetailPageStyle'
+import { useParams } from 'react-router-dom'
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const data = 
   {
@@ -54,7 +55,9 @@ const StudyDetailPage = () => {
   const [recruitType, setRecruitType] = useState(true)
   const [textWrite, setTextWrite] = useState('')
   const [comments, setComments] = useState([])
-  const [replyBtn, setReplyBtn] = useState(false)
+  const [replyBtn, setReplyBtn] = useState(Array(comments.length).fill(false));
+  const [reComments, setReComments] = useState([]);
+  const { id } = useParams();  
 
   return (
     <StudyDetailPageWrap>
@@ -64,10 +67,11 @@ const StudyDetailPage = () => {
             data={data}
             recruitType={recruitType}
             ProfileIcon={ProfileIcon}
+            id={id}
           />
         
         {comments?.map((el, i) => (
-          <StudyDetailCommentWrap2>
+          <StudyDetailCommentWrap2 key={i}>
             <div>
               <StudyProfileNameWrap2>
                 <ProfileFlexWrapper>
@@ -75,14 +79,23 @@ const StudyDetailPage = () => {
                   <StudyWriterWrapper>
                     <span>글쓴이</span>
                     <span>8:20</span>
-                  </StudyWriterWrapper>
+                  </StudyWriterWrapper> 
                 </ProfileFlexWrapper>
               </StudyProfileNameWrap2>
-              <TextReplyWrapper>{el}</TextReplyWrapper>
-              <ReplyButton onClick={() => setReplyBtn(!replyBtn)}>댓글</ReplyButton>
-              {replyBtn &&
+              <TextReplyWrapper>
+                {el}
+                
+              </TextReplyWrapper>
+              <ReplyButton onClick={() =>
+                {
+                  let copy = [...replyBtn] //replybtn state에 복사본을 만들어준다
+                  copy[i] = !copy[i] // 각 댓글마다 답글 버튼의 상태를 저장하기 
+                  setReplyBtn(copy) // setState에 copy를 넣어서 수정해준다
+                } 
+                }>댓글</ReplyButton>
+              {replyBtn[i] &&
                 <ReplyWrapper>
-                  <StudyTextContentsWrapper3>
+                  <StudyTextContentsWrapper3 >
                     <StudyProfileTextWapper>
                       <StudyReplyIconStyle src={ProfileIcon} />
                       <StudyProfileNameWrap>
@@ -100,6 +113,7 @@ const StudyDetailPage = () => {
                         variant="standard"
                         style={{ width: "1000px" }}
                       />
+                      
                     </StudyTextAreaWrapper>
                     <StudySubmitWrapper>
                       <CheckboxWrapper>
@@ -114,7 +128,7 @@ const StudyDetailPage = () => {
 
                       </div>
                       <StudySubmitButton onClick={() => {
-                        setComments([...comments, textWrite]);
+                        setReComments([...reComments, textWrite]);
                         setTextWrite('');
                       }}>
                         댓글작성
@@ -169,5 +183,6 @@ const StudyDetailPage = () => {
     </StudyDetailPageWrap>
   )
 }
+
 
 export default StudyDetailPage;

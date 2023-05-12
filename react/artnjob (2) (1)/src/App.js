@@ -1,6 +1,6 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/home";
 import GlobalStyle from "./styles/globalstyle";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Community from "./pages/Community";
 import Job from "./pages/Job";
 import Login from "./pages/Login";
@@ -14,8 +14,6 @@ import StudyForm from "./pages/StudyForm";
 import Promotion from "./pages/Promotion";
 import PromotionForm from "./pages/PromotionForm";
 import StudyDetailPage from "./pages/StudyDetailPage";
-
-
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,17 +38,20 @@ function App() {
           )}
         </div>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/community" element={<Community />}></Route>
-          <Route path="/job" element={<Job />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/Membership" element={<Membership />}></Route>
-          <Route path="/form" element={<Form/>}></Route>
-          <Route path="/Study" element={<Study/>}></Route>
-          <Route path="/Studyform" element={<StudyForm/>}></Route>
-          <Route path="/StudyDetailPage" element={<StudyDetailPage/>}></Route>
-          <Route path="/Promotion" element={<Promotion/>}></Route>
-          <Route path="/promotionform" element={<PromotionForm/>}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/job" element={<Job />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/Membership" element={<Membership />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/Study" element={<Study />} />
+          <Route path="/Studyform" element={<StudyForm />} />
+          <Route path="/Promotion" element={<Promotion />} />
+          <Route path="/promotionform" element={<PromotionForm />} />
+          <Route
+            path="/StudyDetailPage/:id"
+            element={<StudyDetailPage />}
+          />
         </Routes>
       </Router>
     </>
