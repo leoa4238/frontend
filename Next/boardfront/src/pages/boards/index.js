@@ -1,10 +1,9 @@
 import BoardList from "@/components/units/boards/list/boardList.container";
 
- const BoardListPage = () =>{
-  return(
-    <BoardList/>
+const BoardListPage = () => {
+  return (
+    <BoardList />
   )
- }
+}
 
- export default BoardListPage;
- 
+export default BoardListPage;
